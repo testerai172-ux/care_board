@@ -1,0 +1,27 @@
+# === Secrets — KHÔNG BAO GIỜ đưa lên GitHub ===
+.env
+backend/.env
+*.env
+!.env.example
+!backend/.env.example
+
+# === Python ===
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# === Node.js (nếu express_server.js dùng npm) ===
+node_modules/
+npm-debug.log
+
+# === Hệ điều hành / editor ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Log / file tạm ===
+*.log
+*.tmp
