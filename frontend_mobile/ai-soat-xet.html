@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="h-full bg-surface" lang="vi" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Care Board - AI Soát xét Chuyên môn</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#002551",
+            "primary-container": "#083b76",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#d6e3ff",
+            "primary-fixed-dim": "#aac7ff",
+            "secondary": "#006a6a",
+            "secondary-container": "#79f2f2",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#006e6e",
+            "secondary-fixed": "#7cf5f5",
+            "secondary-fixed-dim": "#5cd9d8",
+            "surface": "#f9f9ff",
+            "surface-bright": "#f9f9ff",
+            "surface-dim": "#cfdaf1",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f0f3ff",
+            "surface-container": "#e7eeff",
+            "surface-container-high": "#dee8ff",
+            "surface-container-highest": "#d8e3fa",
+            "on-surface": "#111c2c",
+            "on-surface-variant": "#434750",
+            "outline": "#737781",
+            "outline-variant": "#c3c6d1",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#5e3000",
+            "on-tertiary-container": "#f38d29",
+            "tertiary-fixed": "#ffdcc3",
+            "on-tertiary-fixed": "#2f1500"
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+            'workflow-step': ['"Be Vietnam Pro"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Be Vietnam Pro', sans-serif;
+        overscroll-behavior: none;
+        background-color: #f9f9ff;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    /* Specific scrollbar requirement */
+    #main-content {
+      overflow-y: scroll;
+      scrollbar-width: thin;
+      scrollbar-color: #083b76 #e2e8f0;
+      height: calc(100vh - 64px);
+      margin-top: 64px;
+    }
+    #main-content::-webkit-scrollbar {
+      width: 5px;
+      display: block;
+    }
+    #main-content::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    #main-content::-webkit-scrollbar-thumb {
+      background-color: #083b76;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden flex flex-col min-h-screen">
+<!-- 1. Header Cố Định Trên Cùng -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-slate-200 px-4 h-16 flex items-center justify-between">
+<!-- Left: Hamburger + Logo + Titles -->
+<div class="flex items-center gap-2.5 min-w-0">
+<button aria-label="Mở menu" class="w-10 h-10 -ml-1 flex items-center justify-center rounded-lg hover:bg-slate-100 text-primary-container transition-colors active:scale-95" id="btn-open-sidebar" onclick="toggleDrawer(true)" type="button">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<img alt="Logo BV ĐHYD TP.HCM" class="w-8 h-8 object-contain rounded flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEms2mqWK2su5uriVQyQVVtXQNEv_alry0m1Rfvg7Nu7uwJze1a1IpWljd-kJf8UMPBVQdIu96I6DWsgAcdvIhmnAIPG_kslbD4oPX030VlGGT-VRwdaAb9T5iYqByiPIno8w3SNcIE3OgkRTPmZ5HBeXEENINU_camzCIT3dDQeeDTCEHLegY2U17d7TKK3PH3BCYInNMk_OLLjpdeROC6qplaNVNBORf87jgkKZ4xOn5Sw80fJ4Ige5HK2qx53Q0BA"/>
+<div class="flex flex-col min-w-0 leading-tight">
+<span class="text-[13px] font-bold text-primary tracking-tight truncate">CARE BOARD</span>
+<span class="text-[10px] text-slate-500 font-medium truncate uppercase tracking-wider">BỆNH VIỆN ĐẠI HỌC Y DƯỢC TP.HCM</span>
+</div>
+</div>
+<!-- Right: Notification + Avatar -->
+<div class="flex items-center gap-2 flex-shrink-0">
+<button aria-label="Thông báo" class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 text-primary-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-error text-white text-[10px] font-bold flex items-center justify-center border-2 border-white leading-none">3</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-[#083b76]/20 flex-shrink-0">
+<img alt="Avatar cán bộ" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMLR7Wv5DdzX1klErEvbHqgGEslUMJQvEy2uKz9mNFb8SE4KnPj7oompzbcRLC1i3K64mZZbjoAnqlNHiwmJjxucm0_sxtbBMslmhcUN7cdt41vUftDTkINX4RKJt4aqqDbP3beE7aTtUu96UoWnKJxe9gFpsI64EoelATVpFY-ow7j-w2J7aUnJt7pLgl08LbUPV5I7H9kBTThmAxoPMYFZgr0UPfMWW40_jy6mNcW21FFjkvTZCFiUzh7zeltz4pyw"/>
+</div>
+</div>
+</header>
+<!-- 2. Slidebar (Slide-out Drawer Menu) -->
+<div class="fixed inset-0 bg-[#002551]/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-out" id="drawer-overlay" onclick="toggleDrawer(false)"></div>
+<aside class="fixed top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-[#002551] text-white z-50 shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 ease-out" id="mobile-drawer"><!-- Drawer Top -->
+<div class="flex items-center justify-between p-4 pt-safe border-b border-white/10 bg-[#083b76]/40">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-lg bg-white p-1 flex items-center justify-center flex-shrink-0">
+<img alt="Logo Bệnh viện Đại học Y Dược TPHCM" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA57mw_gH1oDqam3KX4kcH7fGTPLaoXxIoC2WQ5lAMUD7Rx3n8sDdEatvI1-MBKfKH8vFfHhPs7fjHNlAie1bUW3lTX-BcEA0gURZkdHqSuFtds7vqzGd_vnw_lfR7M92N3UfDdn30eMnhN4VbcLfXbYGPQwwLftm5g2FtFYipofAtyM8JXTDzEYnjRWgMusax2xakQh8zgjsxmx8SV6DxEHKau1-rO773jrItD-HAkJN71XAAgjoF8T62WjpCHT6KoUA"/>
+</div>
+<div class="flex flex-col min-w-0 leading-tight">
+<span class="text-[15px] font-bold text-white tracking-tight truncate">CARE BOARD</span>
+<span class="text-[10px] text-primary-fixed-dim leading-snug truncate">Bệnh viện Đại học Y Dược TPHCM</span>
+</div>
+</div>
+<button aria-label="Đóng menu" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-white/10 text-primary-fixed-dim transition-colors" onclick="toggleDrawer(false)" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Navigation Section -->
+<div class="flex-1 overflow-y-auto px-3 py-4">
+<div class="px-3 pb-2 text-[11px] font-bold tracking-wider text-secondary-fixed uppercase">
+HỆ THỐNG NGHIỆP VỤ
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="secretary" href="tong-quan.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">dashboard</span>
+<span class="">Tổng quan &amp; Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="author,secretary" href="danh-sach-ho-so.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">folder_shared</span>
+<span class="">Danh sách Hồ sơ &amp; Tiến độ</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="author,secretary" href="tao-ho-so.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">post_add</span>
+<span class="">Tạo hồ sơ &amp; Nộp tài liệu</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="author,secretary" href="khong-gian-tai-lieu.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">folder</span>
+<span class="">Kho tài liệu</span>
+</a>
+<!-- Active Item: AI Review Chuyên môn -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-[#083b76] text-white text-[13px] font-semibold shadow-inner border border-primary-fixed-dim/30" data-roles="secretary" href="ai-soat-xet.html"><div class="flex items-center gap-3 min-w-0">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">auto_awesome</span>
+<span class="truncate">AI Review Chuyên môn</span>
+</div></a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="secretary" href="lich-hop-hoi-dong.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">event_upcoming</span>
+<span class="">Lịch họp HĐĐD</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="secretary" href="hoi-dong-ban-hanh.html">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">verified</span>
+<span class="">Kết quả HĐĐD &amp; Ban hành</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary-fixed hover:bg-white/10 transition-colors text-[13px] font-medium" data-roles="author,secretary" href="thong-tin-ca-nhan.html"><span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">account_circle</span>
+<span class="">Thông tin cá nhân</span></a>
+</nav>
+</div><div class="p-3 border-t border-white/10 flex items-center justify-between gap-2 mt-auto" id="drawer-user-card">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white">person</span>
+</div>
+<div class="flex flex-col min-w-0 leading-tight">
+<span class="text-xs font-semibold text-white truncate" id="user-name">ThSĐD. Trần Minh Thư</span>
+<span class="text-[10px] text-white/70 truncate" id="user-role">Thư ký Hội đồng</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors shrink-0 flex items-center justify-center" data-action="logout" title="Đăng xuất" type="button">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div></aside>
+<!-- 3. Vùng Nội Dung Cuộn Dọc Chính (Không có bottom footer bar) -->
+<main class="w-full overflow-x-hidden bg-surface pb-12" id="main-content" style="max-height: calc(-64px + 100vh); overflow-y: scroll !important;">
+<div class="px-4 py-4 space-y-4 max-w-lg mx-auto">
+<!-- A. Header Hồ Sơ Identity Card -->
+<section class="bg-surface-container-lowest p-4 rounded-xl shadow-[0_2px_12px_rgba(8,59,118,0.06)] border border-slate-100 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-primary-fixed/20 pointer-events-none blur-xl"></div>
+<!-- Badges row -->
+<div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+<span class="px-2.5 py-0.5 rounded-md bg-primary-container text-white text-[11px] font-semibold tracking-wide">
+            QTKT-ĐD-2026-084
+          </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant text-[11px] font-medium">
+            Phiên bản v1.1
+          </span>
+<span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200 text-[11px] font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+            Chờ thẩm duyệt Hội đồng
+          </span>
+</div>
+<!-- Tên quy trình -->
+<h1 class="text-[18px] leading-snug text-primary font-bold tracking-tight mb-2">
+          Quy trình kỹ thuật đặt, chăm sóc và theo dõi catheter tĩnh mạch ngoại biên
+        </h1>
+<!-- Reviewer Meta -->
+<div class="flex items-center gap-1.5 mb-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="text-[13px]">Phản biện:</span>
+<span class="text-[13px] font-semibold text-on-surface">ThS.ĐD. Trần Minh Thư</span>
+</div>
+<!-- Action Buttons Pair -->
+<div class="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100">
+<button class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary text-[13px] font-semibold transition-all active:scale-[0.98]" id="btn-compare" type="button">
+<span class="material-symbols-outlined text-[17px]">difference</span>
+<span class="">So khớp v1.0</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-primary-container text-white text-[13px] font-semibold shadow-[0_2px_8px_rgba(8,59,118,0.2)] hover:bg-primary transition-all active:scale-[0.98]" id="btn-create-sheet" type="button">
+<span class="material-symbols-outlined text-[17px]">assignment_turned_in</span>
+<span class="">Tạo phiếu thẩm duyệt</span>
+</button>
+</div>
+</section>
+<!-- B. Quality Control & AI Governance Banner -->
+<section class="bg-blue-50/70 border border-blue-100/80 rounded-xl p-3 flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13px] font-semibold text-primary mb-0.5">
+            Nguyên tắc kiểm soát chất lượng
+          </span>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+            AI chỉ đưa ra khuyến nghị phân tích khách quan từ kho dữ liệu Chuẩn Bộ Y tế và CDC 2024. Quyết định cuối cùng thuộc về Thư ký &amp; HĐĐD.
+          </p>
+</div>
+</section>
+<!-- C. Detected Issues Header -->
+<div class="pt-1 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-[16px] text-primary font-bold">Vấn đề</h2>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[11px] font-bold">
+            3 phát hiện
+          </span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Tự động quét lúc 08:35</span>
+</div>
+<!-- D. Actionable AI Cards Stack -->
+<section class="space-y-3">
+<!-- VẤN ĐỀ 01 -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm border border-slate-100 relative overflow-hidden transition-all duration-300" id="issue-card-1">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex items-center justify-between mb-1.5 pl-1.5">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-error text-white text-[10px] uppercase font-bold tracking-wider">
+                BÌNH LUẬN
+              </span>
+<span class="text-[13px] font-bold text-on-surface">Vấn đề 01 • Thời gian lưu catheter</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Mục 4.2 ↔ 5.1</span>
+</div>
+<p class="text-[13px] text-on-surface pl-1.5 leading-relaxed mb-3">
+            Mục 4.2 ghi <strong class="text-error font-semibold underline decoration-error/40">72 giờ</strong> nhưng Mục 5.1 ghi <strong class="text-secondary font-semibold underline decoration-secondary/40">96 giờ</strong>. Khuyến nghị chuẩn hóa toàn văn thành <strong class="text-primary font-semibold">96 giờ</strong> theo CDC 2024.
+          </p>
+<div class="flex items-center justify-end gap-2 pl-1.5">
+<button class="py-1.5 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-primary text-[12px] font-medium transition-colors flex items-center gap-1" onclick="scrollToSnippet(1)" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">Xem vị trí</span>
+</button>
+<button class="py-1.5 px-3 rounded-lg bg-primary-container text-white text-[12px] font-semibold shadow-sm hover:bg-primary transition-all flex items-center gap-1 active:scale-95" id="btn-fix-1" onclick="resolveIssue(1)" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="">Chấp nhận sửa</span>
+</button>
+</div>
+</article>
+<!-- VẤN ĐỀ 02 -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm border border-slate-100 relative overflow-hidden transition-all duration-300" id="issue-card-2">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-500"></div>
+<div class="flex items-center justify-between mb-1.5 pl-1.5">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-amber-500 text-white text-[10px] uppercase font-bold tracking-wider">
+                CẢNH BÁO
+              </span>
+<span class="text-[13px] font-bold text-on-surface">Vấn đề 02 • Tài liệu đính kèm</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Mục 1</span>
+</div>
+<p class="text-[13px] text-on-surface pl-1.5 leading-relaxed mb-3">
+            Chưa có tệp minh chứng PDF cho <strong class="font-semibold text-primary">Quyết định 3916/QĐ-BYT</strong> trong gói hồ sơ đính kèm.
+          </p>
+<div class="flex items-center justify-end gap-2 pl-1.5">
+<button class="py-1.5 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-error text-[12px] font-medium transition-colors flex items-center gap-1" onclick="ignoreIssue(2)" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span class="">Bỏ qua</span>
+</button>
+<button class="py-1.5 px-3 rounded-lg bg-secondary text-white text-[12px] font-semibold shadow-sm hover:bg-on-secondary-container transition-all flex items-center gap-1 active:scale-95" id="btn-fix-2" onclick="resolveIssue(2)" type="button">
+<span class="material-symbols-outlined text-[16px]">done</span>
+<span class="">Chấp nhận</span>
+</button>
+</div>
+</article>
+<!-- VẤN ĐỀ 03 -->
+<article class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm border border-slate-100 relative overflow-hidden transition-all duration-300" id="issue-card-3">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-500"></div>
+<div class="flex items-center justify-between mb-1.5 pl-1.5">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-amber-500 text-white text-[10px] uppercase font-bold tracking-wider">
+                CẢNH BÁO
+              </span>
+<span class="text-[13px] font-bold text-on-surface">Vấn đề 03 • Tên mã biểu mẫu</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Mục 6</span>
+</div>
+<p class="text-[13px] text-on-surface pl-1.5 leading-relaxed mb-3">
+            Thân văn bản ghi <code class="font-mono font-semibold bg-surface-container px-1 py-0.5 rounded text-[12px]">BM-01</code>, nhưng phụ lục là <code class="font-mono font-semibold bg-surface-container px-1 py-0.5 rounded text-[12px]">BM-01A</code>. Đề xuất đồng bộ thành <strong class="text-primary font-semibold">BM-01A</strong>.
+          </p>
+<div class="flex items-center justify-end gap-2 pl-1.5">
+<button class="py-1.5 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-primary text-[12px] font-medium transition-colors flex items-center gap-1" onclick="scrollToSnippet(3)" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">Xem vị trí</span>
+</button>
+<button class="py-1.5 px-3 rounded-lg bg-secondary text-white text-[12px] font-semibold shadow-sm hover:bg-on-secondary-container transition-all flex items-center gap-1 active:scale-95" id="btn-fix-3" onclick="resolveIssue(3)" type="button">
+<span class="material-symbols-outlined text-[16px]">done</span>
+<span class="">Chấp nhận</span>
+</button>
+</div>
+</article>
+</section>
+<!-- E. Trích Đoạn Dự Thảo Văn Bản (Trang 3/6) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-100" id="snippet-viewer">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">find_in_page</span>
+<span class="text-[14px] font-bold text-primary">Trích đoạn dự thảo văn bản</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded bg-surface-container-high text-primary-container font-semibold">
+            Trang 3 / 6
+          </span>
+</div>
+<!-- Document Content Paper Container -->
+<div class="bg-surface-bright border border-slate-200/80 rounded-lg p-3.5 space-y-3 text-[13px] text-on-surface leading-relaxed">
+<div class="flex items-center justify-between pb-1.5 border-b border-slate-200 text-on-surface-variant text-[11px] font-medium">
+<span class="">4. QUY TRÌNH KỸ THUẬT LÂM SÀNG</span>
+<span class="font-semibold text-primary">Khoa Hồi Sức Tích Cực</span>
+</div>
+<!-- Đoạn 4.2 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low transition-all" id="snip-sec-42">
+<p class="font-semibold text-primary mb-1">4.2. Duy trì đường truyền &amp; cố định kim:</p>
+<p class="text-on-surface-variant">
+              ...điều dưỡng viên thực hiện sát khuẩn vị trí chọc kim bằng Chlorhexidine 2%. Thời gian lưu Catheter tĩnh mạch ngoại biên khuyến cáo không vượt quá 
+              <mark class="bg-error-container text-on-error-container font-semibold px-1 py-0.5 rounded cursor-pointer" id="mark-issue-1">72 giờ</mark> 
+              trừ trường hợp tĩnh mạch bệnh nhân đặc biệt khó tiếp cận...
+            </p>
+</div>
+<!-- Đoạn 5.1 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low transition-all" id="snip-sec-51">
+<p class="font-semibold text-primary mb-1">5.1. Tiêu chí rút hoặc thay thế Catheter:</p>
+<p class="text-on-surface-variant">
+              ...theo dõi dấu hiệu sưng đau, viêm tắc. Nếu không có biến chứng lâm sàng, thay Catheter theo chu kỳ định kỳ tối đa 
+              <mark class="bg-surface-container-highest text-primary font-semibold px-1 py-0.5 rounded">96 giờ (CDC 2024)</mark> 
+              được ghi nhận trong bảng theo dõi...
+            </p>
+</div>
+<!-- Đoạn 6 -->
+<div class="p-2.5 rounded-lg bg-surface-container-low transition-all" id="snip-sec-60">
+<p class="font-semibold text-primary mb-1">6. HỒ SƠ BIỂU MẪU ĐIỀU DƯỠNG:</p>
+<p class="text-on-surface-variant">
+              Điều dưỡng thực hiện ký xác nhận vào phiếu theo dõi đường truyền mã hiệu 
+              <mark class="bg-amber-100 text-amber-900 font-mono font-semibold px-1 py-0.5 rounded cursor-pointer" id="mark-issue-3">BM-01</mark> 
+              sau mỗi ca bàn giao người bệnh...
+            </p>
+</div>
+</div>
+</section>
+<!-- F. Kết Luận Soát Xét Của Thư Ký HĐĐD -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-slate-100">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">rate_review</span>
+<label class="text-[14px] font-bold text-primary" for="secretary-notes">
+            Kết luận soát xét của Thư ký HĐĐD
+          </label>
+</div>
+<p class="text-[12px] text-on-surface-variant mb-2.5 leading-relaxed">
+          Nhập ý kiến chỉ đạo, yêu cầu chỉnh sửa hoặc ghi chú gửi trực tiếp tới Ban Thẩm định Chuyên môn:
+        </p>
+<div class="relative">
+<textarea class="w-full rounded-lg bg-surface-container-low text-on-surface p-3 text-[13px] border border-slate-200 focus:outline-none focus:bg-white focus:ring-2 focus:ring-primary-container transition-all resize-none" id="secretary-notes" placeholder="Nhập ý kiến chỉ đạo..." rows="3">Đã rà soát tự động qua AI. Thống nhất áp dụng thời gian lưu Catheter 96 giờ theo CDC 2024. Đề nghị chuyển phiên bản hiệu đính tới Thường trực HĐĐD.</textarea>
+</div>
+<!-- Electronic Signature / Verification Stamp -->
+<div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="">Đã ký điện tử xác thực Thư ký</span>
+</div>
+<span class="italic">Thời điểm: 08:42 12/03/2026</span>
+</div>
+</section>
+<!-- G. Thanh Nút Hành Động Ở Cuối Trang -->
+<section class="pt-2 pb-4">
+<div class="grid grid-cols-2 gap-3">
+<!-- Trả lại Tác giả: nền sáng, viền đỏ/hồng -->
+<button class="py-3 px-3 rounded-xl bg-red-50 text-error border border-red-200 text-[14px] font-semibold flex items-center justify-center gap-1.5 shadow-sm hover:bg-red-100 active:scale-[0.98] transition-all" id="btn-return" type="button">
+<span class="material-symbols-outlined text-[19px]">reply</span>
+<span class="">Trả lại Tác giả</span>
+</button>
+<!-- Trình HĐĐD: nền xanh #083b76, chữ trắng, icon gửi -->
+<button class="py-3 px-3 rounded-xl bg-[#083b76] hover:bg-[#002551] text-white text-[14px] font-semibold shadow-[0_4px_14px_rgba(8,59,118,0.25)] flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all" id="btn-submit-council" type="button">
+<span class="material-symbols-outlined text-[19px]">send</span>
+<span class="">Trình HĐĐD</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Interactive Logic Scripts -->
+<script>
+    function toggleDrawer(open) {
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      if (!drawer || !overlay) return;
+
+      if (open) {
+        drawer.classList.remove('-translate-x-full');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+      } else {
+        drawer.classList.add('-translate-x-full');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function resolveIssue(id) {
+      const card = document.getElementById('issue-card-' + id);
+      const btn = document.getElementById('btn-fix-' + id);
+      if (!card) return;
+
+      if (id === 1) {
+        const mark = document.getElementById('mark-issue-1');
+        if (mark) {
+          mark.textContent = '96 giờ';
+          mark.className = 'bg-secondary-container text-on-secondary-container font-semibold px-1 py-0.5 rounded';
+        }
+      } else if (id === 3) {
+        const mark = document.getElementById('mark-issue-3');
+        if (mark) {
+          mark.textContent = 'BM-01A';
+          mark.className = 'bg-secondary-container text-on-secondary-container font-semibold px-1 py-0.5 rounded';
+        }
+      }
+
+      card.classList.add('opacity-60');
+      if (btn) {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span><span>Đã xử lý</span>';
+        btn.disabled = true;
+        btn.className = 'py-1.5 px-3 rounded-lg bg-surface-container text-on-surface-variant text-[12px] font-medium flex items-center gap-1 cursor-default';
+      }
+    }
+
+    function ignoreIssue(id) {
+      const card = document.getElementById('issue-card-' + id);
+      if (!card) return;
+      card.classList.add('opacity-40');
+      card.style.filter = 'grayscale(0.8)';
+    }
+
+    function scrollToSnippet(id) {
+      const target = id === 3 ? document.getElementById('snip-sec-60') : document.getElementById('snip-sec-42');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('bg-primary-fixed/40');
+        setTimeout(() => {
+          target.classList.remove('bg-primary-fixed/40');
+        }, 1600);
+      }
+    }
+
+    document.getElementById('btn-submit-council')?.addEventListener('click', function() {
+      const orig = this.innerHTML;
+      this.innerHTML = '<span class="material-symbols-outlined text-[19px] animate-spin">progress_activity</span><span>Đang chuyển...</span>';
+      setTimeout(() => {
+        this.innerHTML = '<span class="material-symbols-outlined text-[19px]">task_alt</span><span>Đã trình Hội đồng</span>';
+        this.className = 'py-3 px-3 rounded-xl bg-secondary text-white text-[14px] font-semibold flex items-center justify-center gap-1.5 cursor-default';
+      }, 800);
+    });
+
+    document.getElementById('btn-return')?.addEventListener('click', function() {
+      const noteArea = document.getElementById('secretary-notes');
+      if (noteArea) {
+        noteArea.focus();
+        noteArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../auth.js"></script>
+<script id="mobile-ai-data-script">
+(function() {
+  async function init() {
+    try {
+      await guardPage();
+      const urlParams = new URLSearchParams(window.location.search);
+      const procId = urlParams.get("id");
+
+      let review = null;
+      if (procId) {
+        const { data } = await sb.from("ai_reviews").select("*, processes(*)").eq("process_id", procId).maybeSingle();
+        if (data) review = data;
+      }
+      if (!review) {
+        const { data } = await sb.from("ai_reviews").select("*, processes(*)").order("reviewed_at", { ascending: false }).limit(1).maybeSingle();
+        if (data) review = data;
+      }
+      if (!review) return;
+
+      const idEl = document.getElementById("mobile-ai-process-id");
+      if (idEl) idEl.textContent = review.process_id || "N/A";
+
+      const nameEl = document.getElementById("mobile-ai-doc-name");
+      if (nameEl) nameEl.textContent = review.processes && review.processes.document_name ? review.processes.document_name : "Quy trình chuyên môn";
+
+    } catch (err) {
+      console.error("Lỗi mobile ai-soat-xet:", err);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>

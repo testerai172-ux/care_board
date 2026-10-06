@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Be Vietnam Pro',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#5cd9d8", "on-tertiary": "#ffffff", "on-error": "#ffffff", "surface-container-highest": "#d8e3fa", "on-tertiary-container": "#f38d29", "secondary": "#006a6a", "inverse-primary": "#aac7ff", "on-background": "#111c2c", "surface-container-low": "#f0f3ff", "tertiary-container": "#5e3000", "error-container": "#ffdad6", "on-secondary-container": "#006e6e", "surface-dim": "#cfdaf1", "surface-variant": "#d8e3fa", "primary-fixed": "#d6e3ff", "on-tertiary-fixed-variant": "#6e3900", "on-secondary-fixed-variant": "#004f4f", "surface-bright": "#f9f9ff", "on-primary-fixed": "#001b3e", "on-surface-variant": "#434750", "tertiary-fixed": "#ffdcc3", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#dee8ff", "secondary-container": "#79f2f2", "outline": "#737781", "outline-variant": "#c3c6d1", "inverse-on-surface": "#ebf1ff", "on-surface": "#111c2c", "surface": "#f9f9ff", "on-error-container": "#93000a", "tertiary": "#3e1e00", "on-primary": "#ffffff", "on-primary-container": "#82a7e9", "error": "#ba1a1a", "inverse-surface": "#263142", "primary-container": "#083b76", "secondary-fixed": "#7cf5f5", "surface-tint": "#375e9b", "on-primary-fixed-variant": "#1b4682", "background": "#f9f9ff", "on-tertiary-fixed": "#2f1500", "surface-container": "#e7eeff", "primary-fixed-dim": "#aac7ff", "on-secondary": "#ffffff", "on-secondary-fixed": "#002020", "primary": "#002551" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "gutter": "1.25rem" }, "fontFamily": { "headline-lg": ["Be Vietnam Pro"], "display": ["Be Vietnam Pro"], "body-sm": ["Be Vietnam Pro"], "headline-sm": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"], "workflow-step": ["Be Vietnam Pro"], "body-lg": ["Be Vietnam Pro"], "label-md": ["Be Vietnam Pro"], "label-sm": ["Be Vietnam Pro"], "headline-md": ["Be Vietnam Pro"], "headline-lg-mobile": ["Be Vietnam Pro"] }, "fontSize": { "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "workflow-step": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(8,59,118,0.06)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Mở menu điều hướng" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low transition-colors text-primary active:scale-95 mr-0.5 flex-shrink-0" id="open-sidebar-btn" onclick="document.getElementById('side-drawer').classList.remove('-translate-x-full'); document.getElementById('drawer-backdrop').classList.remove('opacity-0', 'pointer-events-none');"><span class="material-symbols-outlined text-[24px]">menu</span></button><img alt="Logo Bệnh viện Đại học Y Dược TP.HCM" class="h-9 w-auto object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD98j9DZOSXAMWYhwh9EXhjHkAzPnFaX9fYTrQ4h09sEP09mCmzDV2Q4G1_CRuhDjvre9e9Y_tbTB9cDtGwlqrNeP9SCq6XAAAid23lxVr0E5vpu-LRtVQXDFkPjEqBVn89DjwkuOFH_2lw3qx7v4NU8NR5TqBQ8Puu0unMuary_FEYlQXy1kjgP7TIXx2wcuWbakYU0agGT495Nyteoi9SpjcK2L6lWZgCHLaH6PHm2JNK1jzxaekI-oqD-FeRGwGdvw"/><div class="flex flex-col min-w-0 leading-none"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight truncate">CARE BOARD</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-medium truncate">Bệnh viện Đại học Y Dược TP.HCM</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Thông báo" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-primary-container">notifications</span><span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] font-bold flex items-center justify-center">3</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_0_2px_rgba(8,59,118,0.1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwKqWEUHxWGgsenYNIKlgmXbpZzXryuA-opHR-Rx8_46W_MA2mftSZ4J3IHs9Fc_i3AmntpkeY6Xa4Qu7Te9iRmoPBmw8rCv6IBpzEkV-5MJqNyWBLsyXVCDFCxmAPKDTvi2hb41i8gwOFyYRvhVsbMZjJRWzxCuHjanI2VyRrw1xeusPCgtjZvqy6UwFEUhmQ_CIaOleNAPtBs3QHXxTLxvgIZ708kGCBC8g3lajgbGUTExI-aG-4SdwJMf1Vt4GMZg"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen pb-8" style="height: 100vh; max-height: 100vh; overflow-y: scroll; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgb(8, 59, 118) rgb(238, 242, 246);"><div class="flex flex-col w-full px-space-md py-space-sm space-y-space-md">
+<!-- Header Văn Bản & Trạng Thái Ban Hành -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(8,59,118,0.06)] relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-36 h-36 rounded-full bg-secondary-container/20 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between gap-space-xs mb-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+        ĐÃ BAN HÀNH CHÍNH THỨC
+      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">QTKT-2026-001</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary font-label-md text-label-md mt-1">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+<span class="">QĐ 142/QĐ-BVDHYD • Hiệu lực toàn viện</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold mt-2 leading-tight">
+      Quy trình thiết lập và quản lý catheter tĩnh mạch ngoại biên
+    </h1>
+<div class="flex items-center gap-space-xs mt-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container">apartment</span>
+<span class="">Khối Lâm sàng &amp; Ngoại trú • Phiên bản chuẩn v2.0</span>
+</div>
+<div class="mt-space-md pt-space-sm flex flex-col gap-2">
+<button class="w-full h-11 px-space-md bg-primary-container text-on-primary rounded-lg font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(8,59,118,0.25)] active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="">Tải Quyết định &amp; Toàn văn (PDF)</span>
+</button>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1">
+<span class="">Dung lượng: 8.6 MB</span>
+</div>
+</div>
+</div>
+<!-- Stepper 6 Bước (100% Hoàn Tất Chuẩn Pháp Quy) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(8,59,118,0.04)]">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">timeline</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Tiến độ quy trình 6 bước</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+        6/6 Đạt 100%
+      </span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-space-sm">
+<div class="bg-secondary h-full rounded-full w-full"></div>
+</div>
+<!-- Danh sách bước thu gọn trực quan mobile -->
+<div class="grid grid-cols-2 gap-2 text-left">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">1. Kế hoạch đề xuất</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">Khoa Cấp cứu</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">2. Soạn thảo v1.0</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">Tổ kỹ thuật ĐD</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">3. Thư ký sơ thẩm</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">Hợp lệ thể thức</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">4. Họp HĐĐD Viện</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">9/9 Biểu quyết</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">5. Hoàn chỉnh v2.0</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">Xử lý 2/2 góp ý</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-secondary-container/40">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 font-label-sm text-[10px]">✓</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-primary font-bold truncate">6. Ban hành viện</p>
+<p class="font-label-sm text-[10px] text-secondary truncate">QĐ 142 chính thức</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Khối 1: Kết quả Phiên họp HĐĐD -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(8,59,118,0.06)]">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm border-b-0">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Kết Quả Phiên Họp HĐĐD</h2>
+<p class="font-label-sm text-label-sm text-secondary font-semibold">Thông qua có chỉnh sửa (9/9 biểu quyết)</p>
+</div>
+</div>
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+</div>
+<!-- Thông tin tổng thuật cuộc họp -->
+<div class="bg-surface-container-low rounded-lg p-space-sm space-y-1.5 font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">calendar_today</span>
+          Thời gian
+        </span>
+<span class="text-on-surface font-semibold">18/02/2026 (14:00 - 16:30)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">person_apron</span>
+          Chủ tọa
+        </span>
+<span class="text-on-surface font-semibold text-right">PGS TS. Trần Khải Minh</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">how_to_reg</span>
+          Biểu quyết
+        </span>
+<span class="text-secondary font-bold">100% Đồng thuận (9/9 UV)</span>
+</div>
+</div>
+<!-- 2 Yêu cầu chỉnh sửa trọng tâm -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">Nội dung hoàn chỉnh trọng tâm (2 mục)</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Đã xử lý 100%</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded">
+            Ưu tiên 1 • Lưu Catheter
+          </span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Đã cập nhật
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium mt-1">
+          Thời gian lưu catheter tĩnh mạch ngoại biên theo khuyến cáo CDC 2024 (không vượt quá 96 giờ lưu định kỳ, ưu tiên thay theo chỉ định lâm sàng).
+        </p>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded">
+            Ưu tiên 2 • Sát khuẩn
+          </span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Đã bổ sung
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium mt-1">
+          Quy chuẩn dung dịch sát khuẩn vị trí chọc kim: bắt buộc Chlorhexidine Gluconate 2% hòa tan trong cồn 70 độ thay cho dung dịch Povidone Iodine thông thường.
+        </p>
+</div>
+</div>
+<!-- Đính kèm biên bản ký số -->
+<div class="mt-space-sm p-space-sm bg-surface-container rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary-container text-[24px]">picture_as_pdf</span>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm font-semibold text-primary truncate">bien_ban_hop_HDDD_signed.pdf</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant">2.4 MB • 9 Chữ ký số CA hợp lệ</p>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary text-label-sm font-label-sm font-bold shadow-sm active:scale-95 transition-transform flex-shrink-0">
+        Xem file
+      </button>
+</div>
+</div>
+<!-- Khối 2: Đối chiếu & Cây phiên bản -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(8,59,118,0.06)]">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">difference</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Đối Chiếu &amp; Cây Phiên Bản</h2>
+<p class="font-label-sm text-label-sm text-secondary font-semibold">100% Đã đối khớp &amp; Xác nhận</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-bold">v2.0</span>
+</div>
+<!-- Author & Secretary Card -->
+<div class="p-space-sm bg-surface-container-low rounded-lg mb-space-sm space-y-2">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Tác giả giải trình:</span>
+<span class="text-primary font-semibold">ThSĐD. Nguyễn An (Khoa Cấp cứu)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Thẩm tra giải trình:</span>
+<span class="text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">check_circle</span> ThSĐD. Trần Minh Thư
+        </span>
+</div>
+</div>
+<!-- Chi tiết sửa đổi so khớp -->
+<div class="space-y-2 mb-space-md">
+<div class="p-2.5 bg-surface-container rounded-lg">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-bold">Mục 4.2 • Lưu Catheter CDC</span>
+<span class="text-secondary font-bold">Trang 5 (v2.0)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+          Đã thay thế hoàn toàn khuyến cáo 72 giờ cũ bằng tiêu chuẩn CDC 2024: theo dõi tại chỗ mỗi ca trực và rút ngay khi có dấu hiệu viêm tắc tĩnh mạch ngoại biên.
+        </p>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-primary font-bold">Mục 3.1 &amp; Phụ Lục B • Sát Khuẩn</span>
+<span class="text-secondary font-bold">Trang 9 (v2.0)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+          Bổ sung danh mục vật tư định mức: Gạc tẩm cồn Chlorhexidine 2% chuẩn y tế vô khuẩn phòng ngừa nhiễm khuẩn huyết dòng truyền.
+        </p>
+</div>
+</div>
+<!-- Cây phiên bản thu gọn -->
+<div>
+<span class="font-label-md text-label-md text-primary font-bold mb-2 block">Lịch sử tiến hóa tài liệu</span>
+<div class="relative pl-5 space-y-3 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-secondary">
+<div class="relative">
+<div class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">v2.0 • Bản chuẩn ban hành</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">02/03/2026</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ban Giám đốc BV ký quyết định có hiệu lực toàn viện.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-surface-tint ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">v1.1 • Bản giải trình HĐĐD</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">24/02/2026</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cập nhật 2 góp ý chuyên môn của Hội đồng Thẩm định.</p>
+</div>
+<div class="relative">
+<div class="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-outline-variant ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">v1.0 • Dự thảo đầu tiên</span>
+<span class="font-label-sm text-[11px] text-on-surface-variant">18/02/2026</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Trình phiên họp Hội đồng Điều dưỡng Bệnh viện lần 1.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Khối 3: Phê duyệt Ban Giám đốc & Quyết định Ban hành -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_20px_-2px_rgba(8,59,118,0.06)]">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">approval</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Phê Duyệt &amp; Ban Hành</h2>
+<p class="font-label-sm text-label-sm text-secondary font-semibold">Ban Giám đốc Bệnh viện</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+</div>
+<!-- Checklist Pháp Quy -->
+<div class="bg-surface-container-low rounded-lg p-space-sm mb-space-md space-y-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold block uppercase tracking-wider">
+        Checklist thẩm quyền pháp quy (4/4 Đạt)
+      </span>
+<div class="grid grid-cols-2 gap-2 text-body-sm font-body-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="">HĐĐD thông qua: <strong class="text-secondary">ĐẠT</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="">Xử lý góp ý: <strong class="text-secondary">2/2 ĐẠT</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="">Thẩm tra CA-VNPT: <strong class="text-secondary">ĐẠT</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="">Lưu trữ kho số: <strong class="text-secondary">v2.0 ĐẠT</strong></span>
+</div>
+</div>
+</div>
+<!-- Thẻ Quyết Định Pháp Quy Ban Hành Kèm Con Dấu Điện Tử -->
+<div class="rounded-xl p-space-md bg-gradient-to-br from-surface-container-low via-surface-container-lowest to-surface-container-high shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold uppercase tracking-wider block">
+            Văn bản phê chuẩn chính thức
+          </span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mt-0.5">QĐ 142/QĐ-BVDHYD</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ký ngày 24/02/2026 • Hiệu lực thi hành ngay</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/40 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[26px]">draw</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-label-md flex-shrink-0">
+          BGĐ
+        </div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-primary font-bold truncate">GS TS. Giám đốc Bệnh viện</p>
+<p class="font-label-sm text-[11px] text-secondary font-medium truncate">Đã ký điện tử công vụ hợp lệ (Root CA)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Thông tin Điều phối Lưu trữ & Đồng bộ E-Hospital -->
+</div></main>
+<div class="fixed inset-0 bg-[#001b3e]/60 backdrop-blur-sm z-[60] transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full'); this.classList.add('opacity-0', 'pointer-events-none');"></div><aside class="fixed top-0 left-0 h-full w-[310px] max-w-[85vw] bg-[#083b76] text-white z-[70] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl overflow-hidden" id="side-drawer"><div class="p-4 flex items-center justify-between border-b border-white/10 bg-[#002551]"><div class="flex items-center gap-3"><img alt="Logo Bệnh viện Đại học Y Dược TP.HCM" class="w-9 h-9 rounded-lg object-contain bg-white p-0.5 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0knr7_Okwam0bH84x_8bX_N5QPlgRHD2cQoh6vDoltg2bM_GRwuAVayW0Fx1bMowCWxRnVCpav7PK-aPiMYrFHyWkhzWd4l2RKGx--hZLBlRdaTG3hC50F3sZhc-_CXBj3BizYN1UT75Idr8vcmkmRdXIxUBfTpk7R4mYyEBFmg7Pbv11A8ZE2foWZMKoDn-1FIFdHJf471H9_D7kYwGfVMysUcG1VdMLvSfL0J9-DtZLJhafBldBfqWGl56KR13vAQ"/><div class="flex flex-col"><span class="font-bold text-[16px] text-white tracking-wide">CARE BOARD</span><span class="text-[11px] text-[#aac7ff] font-medium leading-none">Bệnh viện Đại học Y Dược TPHCM</span></div></div><button aria-label="Đóng menu" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/10 text-white/80 hover:text-white transition-colors" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full'); document.getElementById('drawer-backdrop').classList.add('opacity-0', 'pointer-events-none');"><span class="material-symbols-outlined text-[22px]">close</span></button></div><div class="flex-1 overflow-y-auto py-3 px-3 space-y-1.5 custom-drawer-scroll"><div class="px-3 py-1.5 text-[11px] uppercase tracking-wider text-[#82a7e9] font-bold">HỆ THỐNG NGHIỆP VỤ</div><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="secretary" href="tong-quan.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">dashboard</span><span class="">Tổng quan &amp; Dashboard</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="author,secretary" href="danh-sach-ho-so.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">checklist</span><span class="">Danh sách Hồ sơ &amp; Tiến độ</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="author,secretary" href="tao-ho-so.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">post_add</span><span class="">Tạo hồ sơ &amp; Nộp tài liệu</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="author,secretary" href="khong-gian-tai-lieu.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">folder_shared</span><span class="">Kho tài liệu</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="secretary" href="ai-soat-xet.html"><span class="material-symbols-outlined text-[20px] text-[#5cd9d8]">psychology</span><span class="">AI Review Chuyên môn</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="secretary" href="lich-hop-hoi-dong.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">event_available</span><span class="">Lịch họp HĐĐD</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-[#002551] text-[#7cf5f5] font-semibold shadow-inner border border-[#5cd9d8]/30" data-roles="secretary" href="hoi-dong-ban-hanh.html"><span class="material-symbols-outlined text-[20px] text-[#7cf5f5]">verified</span><span class="">Kết quả HĐĐD &amp; Ban hành</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-white/85 hover:bg-white/10 hover:text-white transition-colors text-[14px] font-medium" data-roles="author,secretary" href="thong-tin-ca-nhan.html"><span class="material-symbols-outlined text-[20px] text-[#82a7e9]">account_circle</span><span class="">Thông tin cá nhân</span></a></div><div class="p-3 border-t border-white/10 flex items-center justify-between gap-2 mt-auto" id="drawer-user-card">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white">person</span>
+</div>
+<div class="flex flex-col min-w-0 leading-tight">
+<span class="text-xs font-semibold text-white truncate" id="user-name">ThSĐD. Trần Minh Thư</span>
+<span class="text-[10px] text-white/70 truncate" id="user-role">Thư ký Hội đồng</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors shrink-0 flex items-center justify-center" data-action="logout" title="Đăng xuất" type="button">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div></aside><style>main, html, body { overflow-y: auto !important; scroll-behavior: smooth; } ::-webkit-scrollbar { width: 6px; height: 6px; display: block !important; } ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; } ::-webkit-scrollbar-thumb { background: #083b76; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: #002551; } .custom-drawer-scroll::-webkit-scrollbar { width: 4px; } .custom-drawer-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); } .custom-drawer-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 4px; }</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../auth.js"></script>
+<script id="mobile-council-data-script">
+(function() {
+  async function init() {
+    try {
+      await guardPage();
+      const urlParams = new URLSearchParams(window.location.search);
+      const procId = urlParams.get("id");
+
+      let currentResult = null;
+      if (procId) {
+        const { data } = await sb.from("council_results").select("*, processes(*)").eq("process_id", procId).maybeSingle();
+        if (data) currentResult = data;
+      }
+      if (!currentResult) {
+        const { data } = await sb.from("council_results").select("*, processes(*)").order("meeting_date", { ascending: false }).limit(1).maybeSingle();
+        if (data) currentResult = data;
+      }
+      if (currentResult && currentResult.processes && currentResult.processes.document_name) {
+        const titleEl = document.getElementById("mobile-council-doc-title");
+        if (titleEl) titleEl.textContent = currentResult.processes.document_name;
+      }
+    } catch (err) {
+      console.error("Lỗi mobile hội đồng:", err);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>

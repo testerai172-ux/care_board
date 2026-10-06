@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html class="h-full" lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+@layer base{
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;}
+  body{overscroll-behavior:none;}
+  main>:first-child{margin-top:0!important;}
+  main>:last-child{margin-bottom:0!important;}
+}
+
+/* Custom Vertical Scrollbar Styling */
+.custom-scroll {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #083b76 #f0f4f8;
+}
+
+.custom-scroll::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: #083b76;
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: #062b56;
+}
+
+/* Collapsed sidebar transition styles */
+#sidebar.collapsed {
+  width: 5rem; /* w-20 */
+}
+#sidebar.collapsed .sidebar-text,
+#sidebar.collapsed .sidebar-header-text,
+#sidebar.collapsed .sidebar-badge-area {
+  display: none !important;
+}
+#sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+#sidebar.collapsed .nav-item-inner {
+  justify-content: center;
+  width: 100%;
+}
+#sidebar.collapsed .header-logo-container {
+  justify-content: center;
+  width: 100%;
+}
+#sidebar.collapsed #btnToggleSidebar {
+  margin: 0 auto;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#1b4682","on-primary-fixed":"#001b3e","outline":"#737781","surface-container-highest":"#d8e3fa","on-tertiary-fixed":"#2f1500","secondary-fixed":"#7cf5f5","inverse-surface":"#263142","primary":"#002551","tertiary":"#3e1e00","on-primary":"#ffffff","primary-container":"#083b76","on-secondary":"#ffffff","secondary":"#006a6a","on-surface":"#111c2c","secondary-container":"#79f2f2","on-background":"#111c2c","on-error":"#ffffff","surface-variant":"#d8e3fa","surface-container-low":"#f0f3ff","on-tertiary-fixed-variant":"#6e3900","primary-fixed-dim":"#aac7ff","inverse-on-surface":"#ebf1ff","on-secondary-fixed":"#002020","surface-container-high":"#dee8ff","tertiary-fixed-dim":"#ffb77d","secondary-fixed-dim":"#5cd9d8","tertiary-container":"#5e3000","background":"#f9f9ff","on-error-container":"#93000a","on-secondary-container":"#006e6e","on-primary-container":"#82a7e9","error":"#ba1a1a","on-tertiary-container":"#f38d29","surface-bright":"#f9f9ff","surface-tint":"#375e9b","surface":"#f9f9ff","on-surface-variant":"#434750","inverse-primary":"#aac7ff","on-secondary-fixed-variant":"#004f4f","surface-container":"#e7eeff","error-container":"#ffdad6","on-tertiary":"#ffffff","tertiary-fixed":"#ffdcc3","surface-dim":"#cfdaf1","primary-fixed":"#d6e3ff","outline-variant":"#c3c6d1"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xs":"0.25rem","space-xl":"2.5rem",margin:"2rem","space-lg":"1.5rem","space-md":"1rem",gutter:"1.25rem","space-sm":"0.5rem"},fontFamily:{"body-sm":["Be Vietnam Pro"],"headline-sm":["Be Vietnam Pro"],"body-md":["Be Vietnam Pro"],"label-md":["Be Vietnam Pro"],"headline-lg":["Be Vietnam Pro"],"body-lg":["Be Vietnam Pro"],"headline-lg-mobile":["Be Vietnam Pro"],"label-sm":["Be Vietnam Pro"],display:["Be Vietnam Pro"],"headline-md":["Be Vietnam Pro"],"workflow-step":["Be Vietnam Pro"]},fontSize:{"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"26px",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"500"}],display:["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"workflow-step":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"700"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased h-full flex overflow-hidden">
+<!-- SIDEBAR (Collapsible with JS & Icons) -->
+<aside class="h-full w-72 bg-primary-container text-on-primary z-50 flex flex-col shrink-0 shadow-[0_4px_24px_rgba(8,59,118,0.18)] transition-all duration-300 select-none" id="sidebar">
+<!-- Brand Header -->
+<div class="h-20 px-space-md flex items-center justify-between bg-primary/40 header-logo-container gap-2">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="bg-surface-container-lowest p-1 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+<img alt="Logo bv 1.jpg" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc8M4_y0u4socmEkWoUB90o1-75KRv-vzAG1Yk47Ca3AeG4dFeQjdB8G-k-r-LxKtKxVTtrW96xV7G-mU1_2mFky67c9hTBEagI5TaudLSOrJVxGz5WWYSJ_WwP0TcC4B3C99YhpTyu8NS1FmEnDyKk5uUirJorluFvub3-pvVxcZirvGd-8iP0DcCU6-5dyopVvKe3RNqDyZj55QxY4kjp5MJ22lTXaupq6iOcE4tomxcIiZk4JO9Pixia7Kr5d7wdQ"/>
+</div>
+<div class="flex flex-col min-w-0 sidebar-header-text">
+<span class="font-headline-sm text-headline-sm text-on-primary tracking-wide leading-tight truncate">CARE BOARD</span>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim leading-tight truncate">Bệnh viện Đại học Y Dược TP.HCM</span>
+</div>
+</div>
+<button class="text-primary-fixed-dim hover:text-on-primary hover:bg-primary/50 p-space-xs rounded-lg transition-colors flex items-center justify-center shrink-0" id="btnToggleSidebar" title="Thu gọn / Mở rộng thanh điều hướng" type="button">
+<span class="material-symbols-outlined text-[22px]" id="toggleSidebarIcon">menu_open</span>
+</button>
+</div>
+<!-- Sub-header Badge Area -->
+<div class="px-space-md py-space-sm sidebar-badge-area">
+<div class="bg-primary/30 rounded-lg px-space-sm py-1.5 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-wider truncate">Hội đồng Điều dưỡng</span>
+<span class="h-2 w-2 rounded-full bg-secondary-container animate-pulse shrink-0"></span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-space-sm py-space-xs overflow-y-auto flex flex-col gap-1" data-active-classes="bg-surface-container-lowest text-primary font-headline-sm shadow-sm">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="tong-quan.html" title="Tổng quan">
+<span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="danh-sach-ho-so.html" title="Danh sách hồ sơ &amp; Tiến độ">
+<span class="material-symbols-outlined text-[20px] shrink-0">view_timeline</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Danh sách hồ sơ &amp; Tiến độ</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="tao-ho-so.html" title="Tạo hồ sơ &amp; Nộp tài liệu">
+<span class="material-symbols-outlined text-[20px] shrink-0">post_add</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Tạo hồ sơ &amp; Nộp tài liệu</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="khong-gian-tai-lieu.html" title="Kho tài liệu">
+<span class="material-symbols-outlined text-[20px] shrink-0">folder_open</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Kho tài liệu</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="ai-soat-xet.html" title="AI Soát xét">
+<span class="material-symbols-outlined text-[20px] shrink-0">auto_awesome</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">AI Soát xét</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="hoi-dong-ban-hanh.html" title="Hội đồng &amp; Ban hành">
+<span class="material-symbols-outlined text-[20px] shrink-0">gavel</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Hội đồng &amp; Ban hành</span>
+</a>
+<a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-white text-[#083b76] font-bold shadow-md transition-all text-sm nav-item nav-link-item" data-roles="secretary" href="lich-hop-hoi-dong.html" title="Lịch họp Hội đồng">
+<span class="material-symbols-outlined text-[20px] text-[#083b76] shrink-0">event_available</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Lịch họp Hội đồng</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="thong-tin-ca-nhan.html" title="Thông tin cá nhân">
+<span class="material-symbols-outlined text-[20px] shrink-0">badge</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Thông tin cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-action="logout" href="#" title="Đăng xuất">
+<span class="material-symbols-outlined text-[20px] shrink-0">logout</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Đăng xuất</span>
+</a>
+</nav></aside>
+<!-- MAIN WRAPPER (Co giãn linh hoạt flex-1) -->
+<div class="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
+<!-- FIXED TOP HEADER -->
+<header class="h-20 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between gap-space-md shrink-0 border-b border-surface-container-high/40">
+<div class="flex items-center gap-space-md flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-space-md bg-surface-container-lowest rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm transition-all" placeholder="Tra cứu mã quy trình (VD: QTKT-DD-042), tên tài liệu hoặc hồ sơ..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Thông báo" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-error ring-2 ring-surface"></span>
+</button>
+<button class="p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Trợ giúp" type="button">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+</button>
+<div class="h-8 w-px bg-surface-container-high"></div>
+<div class="flex items-center gap-space-sm pl-space-xs">
+<div class="relative">
+<img alt="ThSĐD. Trần Minh Thư" class="w-9 h-9 rounded-full object-cover ring-2 ring-surface-container-highest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuRSP1D-mhWT5KffUYMU4_Of-Dw9FWCSWLuoG1xZb7vvJZ5I5VzObRvLdGT983CXDtVlw6QwAuJaBCvRJSWfsSdJln0nq3cNFO_DntfX8K0FIs2UGnHnNMiora6ysaWR41yP7sjOoFTWpSN7al0U4lPuYQczsgf9C0DkMrWgZNupYh3Rxc5k8qIjevlHalAnWeiafWQoKHYb4lZI8tWXKKdBaJKWu8b6N9URXgjHKdHwTmDUDJU9YAKvuoee8Vq6E9wQ"/>
+<span class="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-secondary ring-2 ring-surface"></span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight" id="user-name">ThSĐD. Trần Minh Thư</span>
+<span class="font-label-sm text-label-sm text-secondary leading-tight font-medium" id="user-role">Thư ký Hội đồng</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTENT WITH CUSTOM SCROLLBAR -->
+<main class="custom-scroll flex-1 w-full bg-surface px-space-lg py-space-md focus:outline-none" style="overflow-y: scroll; scrollbar-width: thin; scrollbar-color: #083b76 #f0f4f8;" tabindex="0">
+<div class="flex flex-col w-full space-y-space-md pb-12">
+<!-- BANNER TỔNG QUAN HÀNH CHÍNH & TIÊU ĐỀ TRANG -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-lg shadow-sm">
+<div class="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-gradient-to-br from-primary/10 via-secondary/15 to-transparent blur-3xl pointer-events-none"></div>
+<div class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="space-y-space-xs max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+              LỊCH HỌP HỘI ĐỒNG ĐIỀU DƯỠNG
+            </h1>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm shadow-sm transition-all" id="btnOpenAuditLog">
+<span class="material-symbols-outlined text-[20px] text-primary">history_edu</span>
+<span class="">Lưu vết hủy họp</span>
+<span class="px-1.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">1</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm shadow-md transition-all group" id="btnOpenCreateModal">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">calendar_add_on</span>
+<span class="">+ Thêm lịch họp mới</span>
+</button>
+</div>
+</div>
+</div>
+<!-- STATS TỔNG HỢP NHANH (METRIC CARDS) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Sắp diễn ra -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Kế hoạch thẩm định</span>
+<h2 id="stat-upcoming-count" class="font-display text-display text-primary font-bold">03</h2>
+<span class="font-body-sm text-body-sm text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                Cuộc họp sắp diễn ra
+              </span>
+</div>
+<div class="h-12 w-12 rounded-xl bg-secondary-container/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">event_available</span>
+</div>
+</div>
+<div class="mt-space-md h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Card 2: Đã thông qua -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Hiệu suất tháng 02/2026</span>
+<h2 id="stat-approved-count" class="font-display text-display text-primary font-bold">18</h2>
+<span class="font-body-sm text-body-sm text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+                Hồ sơ đã thông qua tháng này
+              </span>
+</div>
+<div class="h-12 w-12 rounded-xl bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">verified</span>
+</div>
+</div>
+<div class="mt-space-md h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<!-- Card 3: Đã hủy / Dời lịch -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Biến động lịch trình</span>
+<h2 id="stat-cancelled-count" class="font-display text-display text-tertiary-container font-bold">01</h2>
+<span class="font-body-sm text-body-sm text-on-tertiary-container font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+                Lịch họp đã hủy/dời lịch
+              </span>
+</div>
+<div class="h-12 w-12 rounded-xl bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[28px]">notification_important</span>
+</div>
+</div>
+<div class="mt-space-md h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<!-- NAVIGATION TABS & STATUS FILTERS -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1 overflow-x-auto" id="filterTabGroup">
+<button class="filter-btn active-tab px-space-md py-2 rounded-lg font-headline-sm text-headline-sm transition-all bg-primary text-on-primary" data-filter="all">
+            Tất cả (4)
+          </button>
+<button class="filter-btn px-space-md py-2 rounded-lg font-headline-sm text-headline-sm transition-all text-on-surface-variant hover:bg-surface-container" data-filter="upcoming">
+            Sắp diễn ra (3)
+          </button>
+<button class="filter-btn px-space-md py-2 rounded-lg font-headline-sm text-headline-sm transition-all text-on-surface-variant hover:bg-surface-container" data-filter="completed">
+            Đã hoàn thành (18)
+          </button>
+<button class="filter-btn px-space-md py-2 rounded-lg font-headline-sm text-headline-sm transition-all text-on-surface-variant hover:bg-surface-container" data-filter="cancelled">
+            Đã hủy (1)
+          </button>
+</div>
+<!-- Search/Export Mini Tools -->
+<div class="flex items-center gap-space-xs px-space-xs">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" placeholder="Tìm theo mã QTKT..." type="text"/>
+</div>
+</div>
+</div>
+<!-- MAIN LIST WORKSPACE: SẮP TỚI & ĐỐI CHIẾU -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left Column: Upcoming Meetings Cards (8 columns) -->
+<div class="lg:col-span-8 space-y-space-md" id="meetingCardsList">
+<!-- CARD 1: SẮP DIỄN RA (HÔM NAY / TUẦN NÀY) -->
+<div class="meeting-card upcoming rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="pl-2 space-y-space-sm">
+<!-- Top Row: Code, Badge & Date -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-primary text-on-primary font-label-md text-label-md">
+                    QTKT-2026-001
+                  </span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-md text-label-md font-semibold flex items-center gap-1">
+<span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+                    Sắp diễn ra (Tuần này)
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Tạo lúc: 20/02/2026</span>
+</div>
+<!-- Title -->
+<h3 class="font-headline-md text-headline-md text-primary leading-snug">
+                Phiên họp thẩm định: Quy trình kỹ thuật QTKT-2026-001 (Chăm sóc Catheter ngoại biên)
+              </h3>
+<!-- Details Info Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 bg-surface-container-low p-space-sm rounded-lg font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span class="">14:00 - 16:00, Thứ Sáu (27/02/2026)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">meeting_room</span>
+<span class="font-medium text-on-surface">P. Giao ban P. Điều dưỡng (Cơ sở 1)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">person_pin</span>
+<span class="">Chủ tọa: <strong class="text-on-surface">PGS.TS. Trưởng phòng ĐD</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">assignment_ind</span>
+<span class="">Thư ký: <strong class="text-on-surface">ThSĐD. Trần Minh Thư</strong></span>
+</div>
+</div>
+<!-- Attendance Roster -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="ThSĐD. Trần Minh Thư" class="inline-block h-7 w-7 rounded-full ring-2 ring-surface-container-lowest object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA02h_1r-G6-lKCF-WFZ1JooH4ZZElW0l20NLU8Qwf2iqmGDvD7y5SCoinz3_kHimIcw-9-dR6MZkURpwSZGn4bxQGkXC2zaLMvugKAyY_Gs7otT6U76tyYVmhudELWPDKzMl5rwuH18zF6rMz4eA6vp4b22A6BfDefKhEnYpfodIgFKHOpJa-9y_bQJZ_tccEDkWhVk_Wsk9TeZBYT3rj8a7Ud_Qbw-lc_H8l7tcMBHF60-EXlbSd-N7l0BKvp03ZLvA"/>
+<div class="inline-flex h-7 w-7 rounded-full bg-primary-fixed-dim text-on-primary-fixed font-label-sm text-label-sm items-center justify-center ring-2 ring-surface-container-lowest">ĐD</div>
+<div class="inline-flex h-7 w-7 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm items-center justify-center ring-2 ring-surface-container-lowest">BS</div>
+<div class="inline-flex h-7 w-7 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm items-center justify-center ring-2 ring-surface-container-lowest">+6</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold ml-1">
+                    9/9 Ủy viên đã xác nhận tham dự
+                  </span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-outline">Đủ điều kiện họp</span>
+</div>
+</div>
+<!-- Action Toolbars -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span class="">Xem chi tiết &amp; Tài liệu (v2.1)</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-secondary font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors" title="Gửi email &amp; thông báo app Care Board">
+<span class="material-symbols-outlined text-[16px]">notifications_active</span>
+<span class="">Gửi nhắc nhở</span>
+</button>
+</div>
+<!-- Cancel Button with Trigger -->
+<button class="px-space-sm py-1.5 rounded-lg text-error hover:bg-error-container/30 font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors" onclick="openCancelModal('QTKT-2026-001', 'Phiên họp thẩm định: Quy trình kỹ thuật QTKT-2026-001 (Chăm sóc Catheter ngoại biên)')">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span class="">Hủy lịch họp</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 2: CHỜ XÁC NHẬN TÀI LIỆU -->
+<div class="meeting-card upcoming rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-on-tertiary-container"></div>
+<div class="pl-2 space-y-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-primary text-on-primary font-label-md text-label-md">
+                    QTKT-2026-004
+                  </span>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-md text-label-md font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pending</span>
+                    Chờ xác nhận tài liệu
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Tạo lúc: 22/02/2026</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary leading-snug">
+                Phiên họp đột xuất: Cập nhật hướng dẫn phòng ngừa loét tỳ đè ở bệnh nhân hồi sức tích cực (QTKT-2026-004)
+              </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 bg-surface-container-low p-space-sm rounded-lg font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span class="">09:30 - 11:30, Thứ Ba (03/03/2026)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">meeting_room</span>
+<span class="font-medium text-on-surface">Hội trường B2 (Khu Khám bệnh)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">person_pin</span>
+<span class="">Chủ tọa: <strong class="text-on-surface">TS. ĐD Trưởng khối Ngoại</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">assignment_ind</span>
+<span class="">Thư ký: <strong class="text-on-surface">ThSĐD. Trần Minh Thư</strong></span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-medium">
+                  6/8 Ủy viên đã nhận hồ sơ phản biện
+                </span>
+<span class="font-label-sm text-label-sm text-outline">Phiên họp đột xuất đợt 1</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">Xem chi tiết</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+<span class="">Chỉnh sửa</span>
+</button>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg text-error hover:bg-error-container/30 font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors" onclick="openCancelModal('QTKT-2026-004', 'Phiên họp đột xuất: Cập nhật hướng dẫn phòng ngừa loét tỳ đè ở bệnh nhân hồi sức tích cực')">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span class="">Hủy lịch họp</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 3: ĐỊNH KỲ THÁNG 3 -->
+<div class="meeting-card upcoming rounded-xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-outline-variant"></div>
+<div class="pl-2 space-y-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md">
+                    ĐK-2026-03
+                  </span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-semibold">
+                    Đã lên lịch
+                  </span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Tạo lúc: 15/02/2026</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary leading-snug">
+                Hội chẩn &amp; Rà soát định kỳ danh mục bảng kiểm kỹ thuật tiêm an toàn năm 2026
+              </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 bg-surface-container-low p-space-sm rounded-lg font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span class="">15:00 - 17:00, Thứ Năm (12/03/2026)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">laptop_mac</span>
+<span class="font-medium text-on-surface">Phòng họp trực tuyến Hybrid (Zoom BV)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">person_pin</span>
+<span class="">Chủ trì: <strong class="text-on-surface">Hội đồng Điều dưỡng BV</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-outline">assignment_ind</span>
+<span class="">Thư ký: <strong class="text-on-surface">ThSĐD. Trần Minh Thư</strong></span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">Chi tiết</span>
+</button>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg text-error hover:bg-error-container/30 font-headline-sm text-headline-sm text-[13px] flex items-center gap-1 transition-colors" onclick="openCancelModal('ĐK-2026-03', 'Hội chẩn &amp; Rà soát định kỳ danh mục bảng kiểm kỹ thuật tiêm an toàn năm 2026')">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span class="">Hủy lịch họp</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Secretary Assist Console & Cancelled Audit Preview (4 columns) -->
+<div class="lg:col-span-4 space-y-space-md">
+<!-- Quick Info Panel: Chuẩn bị họp -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center gap-space-sm">
+<img alt="Logo BV ĐHYD" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGf74pvthQ67hEnjImdhkVV-3Sh2vX_NANHcCcw48v5gkG_nO43eepac3zbtuHrzsXCKjkY9NsycW-vbygpsYdhSmdn7Da5QE-DCti4NIOFRTRz5JVQw7ghf6J1qtRYW3cULq9EkT3aPWVC0uPm4yaHxTopiu-pHxWsRIqKR7x2cNZXY6OskEIVK4Y23TLB5iVlPX3uLda0btA1WmCWpLcMT-diHpTB-T9S4qgS4WEjtHzg3yzCBWmN9iEDU2hjDm0Zg"/>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary leading-tight">Quy chuẩn tổ chức họp</h4>
+<span class="font-label-sm text-label-sm text-outline">Ban hành theo QĐ số 412/QĐ-ĐHYD</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Theo quy chế của Bệnh viện, mọi phiên họp thẩm định Hội đồng Điều dưỡng cần đạt tối thiểu <strong>2/3 ủy viên</strong> tham dự để có giá trị biểu quyết ban hành quy trình kỹ thuật.
+            </p>
+<div class="space-y-2 pt-1 font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<span class="text-on-surface">Tài liệu gửi trước</span>
+<span class="font-semibold text-secondary">≥ 48 Giờ làm việc</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<span class="text-on-surface">Biên bản phản biện</span>
+<span class="font-semibold text-primary">Mẫu BM-HĐĐD-08</span>
+</div>
+</div>
+</div>
+<!-- AUDIT TRAIL PREVIEW: LỊCH HỌP ĐÃ HỦY GẦN ĐÂY -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[20px]">event_busy</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Biên bản hủy gần đây</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">1 hồ sơ</span>
+</div>
+<!-- Audit Item -->
+<div class="p-space-sm rounded-lg bg-surface-container-low space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-error">QTKT-2025-089</span>
+<span class="font-label-sm text-label-sm text-outline">19/02/2026 10:15</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface text-[14px]">
+                Họp nghiệm thu kỹ thuật chăm sóc mở khí quản tại nhà
+              </p>
+<div class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container-lowest p-2 rounded">
+<span class="text-error font-medium">Lý do: </span>
+<span class="">Tác giả xin dời lịch để bổ sung minh chứng lâm sàng theo yêu cầu chuyên gia phản biện.</span>
+</div>
+<div class="flex items-center justify-between pt-1 font-label-sm text-label-sm text-outline">
+<span class="">Người hủy: <strong>ThSĐD. Trần Minh Thư</strong></span>
+<span class="text-secondary font-medium">Đã thông báo SMS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- MODAL 1: THÊM LỊCH HỌP MỚI (POPUP FORM) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm hidden p-space-md" id="createMeetingModal">
+<div class="relative w-full max-w-2xl bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-primary text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[24px] text-secondary-container">calendar_add_on</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-primary leading-tight">Lập kế hoạch lịch họp mới</h3>
+<span class="font-label-sm text-label-sm text-primary-fixed-dim">Hội đồng chuyên môn Điều dưỡng Bệnh viện</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-primary-fixed-dim hover:text-on-primary hover:bg-primary-container transition-colors" id="btnCloseCreateModal">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable with custom scrollbar) -->
+<div class="p-space-lg overflow-y-auto space-y-space-md flex-1 custom-scroll">
+<!-- Tên phiên họp -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Tên phiên họp thẩm định <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm" placeholder="Ví dụ: Phiên họp HĐĐD thẩm định QTKT-2026-001: Quy trình thiết lập &amp; chăm sóc catheter..." type="text" value="Phiên họp HĐĐD thẩm định QTKT-2026-001: Quy trình thiết lập &amp; chăm sóc catheter tĩnh mạch ngoại biên"/>
+</div>
+<!-- Thời gian & Địa điểm (2 cột) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Ngày họp <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm" type="date" value="2026-02-27"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Khung giờ thẩm định <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm" type="text" value="14:00 - 16:30"/>
+</div>
+</div>
+<!-- Phòng họp -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Địa điểm / Hình thức họp <span class="text-error">*</span></label>
+<select class="w-full h-11 px-3 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary shadow-sm">
+<option>Phòng giao ban lầu 3 - Khu A (Cơ sở 1)</option>
+<option>Hội trường B2 - Khu Khám bệnh</option>
+<option>Phòng họp trực tuyến Hybrid (Care Board + Zoom Y Dược)</option>
+<option>Phòng họp Phòng Điều dưỡng - Tòa nhà Trung tâm</option>
+</select>
+</div>
+<!-- Thành phần Hội đồng tham gia -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Thành phần Hội đồng tham gia</label>
+<div class="p-space-sm rounded-lg bg-surface-container-low space-y-2">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">Chủ tịch Hội đồng:</span>
+<span class="font-semibold text-primary">PGS.TS. Trưởng phòng Điều dưỡng</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">Thư ký tổng hợp:</span>
+<span class="font-semibold text-secondary">ThSĐD. Trần Minh Thư</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">Ủy viên phản biện:</span>
+<span class="font-medium text-on-surface">07 Chuyên gia chuyên khoa liên quan</span>
+</div>
+</div>
+</div>
+<!-- Tài liệu đính kèm cần thẩm định -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Tài liệu &amp; Hồ sơ trình hội đồng</label>
+<div class="p-space-sm rounded-lg border-dashed border-2 border-surface-container-high bg-surface-container-low/50 flex flex-col items-center justify-center py-4 text-center cursor-pointer hover:bg-surface-container-high/40 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-primary">upload_file</span>
+<span class="font-headline-sm text-headline-sm text-primary text-[14px]">Tải lên dự thảo QTKT hoặc hồ sơ minh chứng</span>
+<span class="font-label-sm text-label-sm text-outline">Định dạng PDF, DOCX dung lượng tối đa 25MB</span>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-headline-sm text-headline-sm hover:bg-outline-variant transition-colors" id="btnCancelCreateModal">
+        Hủy bỏ
+      </button>
+<button class="px-space-lg py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm shadow-md transition-all flex items-center gap-1.5" id="btnSubmitCreateModal">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="">Lưu &amp; Phát thư mời họp</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MODAL 2: XÁC NHẬN HỦY LỊCH HỌP (CANCEL MEETING CONFIRMATION DIALOG) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm hidden p-space-md" id="cancelMeetingModal">
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden flex flex-col">
+<!-- Modal Header Danger -->
+<div class="px-space-lg py-space-md bg-error-container text-on-error-container flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[24px] text-error">event_busy</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-error leading-tight">Hủy lịch họp thẩm định</h3>
+<span class="font-label-sm text-label-sm text-on-error-container">Thao tác này sẽ lưu vào vết kiểm toán hệ thống</span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-on-error-container hover:bg-error/10 transition-colors" onclick="closeCancelModal()">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Body -->
+<div class="p-space-lg space-y-space-md">
+<div class="p-space-sm rounded-lg bg-surface-container-low space-y-1">
+<span class="font-label-sm text-label-sm text-outline" id="cancelMeetingCodeDisplay">Mã QTKT</span>
+<p class="font-headline-sm text-headline-sm text-primary text-[14px]" id="cancelMeetingTitleDisplay">
+          Tên phiên họp chuẩn bị hủy
+        </p>
+</div>
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Chọn lý do hủy họp <span class="text-error">*</span></label>
+<div class="space-y-2">
+<label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest shadow-sm hover:bg-surface-container-low cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary" name="cancelReason" type="radio" value="Hoãn do đột xuất phòng chống dịch/cấp cứu"/>
+<span class="font-body-sm text-body-sm text-on-surface">Hoãn do lịch đột xuất Ban Giám đốc / Cấp cứu ngoại viện</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest shadow-sm hover:bg-surface-container-low cursor-pointer">
+<input class="text-primary focus:ring-primary" name="cancelReason" type="radio" value="Tác giả xin dời lịch bổ sung hồ sơ"/>
+<span class="font-body-sm text-body-sm text-on-surface">Tác giả chuyên môn xin dời lịch bổ sung minh chứng</span>
+</label>
+<label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest shadow-sm hover:bg-surface-container-low cursor-pointer">
+<input class="text-primary focus:ring-primary" name="cancelReason" type="radio" value="Chưa đủ thành viên phản biện tối thiểu"/>
+<span class="font-body-sm text-body-sm text-on-surface">Chưa đạt tỷ lệ 2/3 ủy viên phản biện tham dự</span>
+</label>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Ghi chú bổ sung gửi tới Ủy viên</label>
+<textarea class="w-full p-2 rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" placeholder="Nhập lời nhắn hoặc kế hoạch dời lịch dự kiến..." rows="2"></textarea>
+</div>
+</div>
+<!-- Footer Danger -->
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-headline-sm text-headline-sm hover:bg-outline-variant transition-colors" onclick="closeCancelModal()">
+        Quay lại
+      </button>
+<button class="px-space-md py-2 rounded-lg bg-error hover:bg-on-error-container text-on-error font-headline-sm text-headline-sm shadow-sm transition-all flex items-center gap-1.5" onclick="confirmCancellation()">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="">Xác nhận hủy &amp; Gửi thông báo</span>
+</button>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION -->
+<div class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-space-sm transition-all transform translate-y-20 opacity-0 pointer-events-none" id="careToast">
+<span class="material-symbols-outlined text-secondary-container" id="toastIcon">check_circle</span>
+<span class="font-body-sm text-body-sm" id="toastMsg">Thao tác thành công!</span>
+</div>
+<script>
+  // SIDEBAR TOGGLE LOGIC
+  const sidebar = document.getElementById('sidebar');
+  const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+  const toggleSidebarIcon = document.getElementById('toggleSidebarIcon');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('collapsed');
+    const isCollapsed = sidebar.classList.contains('collapsed');
+    if (isCollapsed) {
+      sidebar.classList.remove('w-72');
+      toggleSidebarIcon.textContent = 'menu';
+      btnToggleSidebar.title = 'Mở rộng thanh điều hướng';
+    } else {
+      sidebar.classList.add('w-72');
+      toggleSidebarIcon.textContent = 'menu_open';
+      btnToggleSidebar.title = 'Thu gọn thanh điều hướng';
+    }
+  }
+
+  btnToggleSidebar.addEventListener('click', toggleSidebar);
+
+  // Keyboard shortcut Ctrl + B or Cmd + B to toggle sidebar
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      toggleSidebar();
+    }
+  });
+
+  // MODAL & GENERAL LOGIC
+  const createModal = document.getElementById('createMeetingModal');
+  const cancelModal = document.getElementById('cancelMeetingModal');
+  const btnOpenCreate = document.getElementById('btnOpenCreateModal');
+  const btnCloseCreate = document.getElementById('btnCloseCreateModal');
+  const btnCancelCreate = document.getElementById('btnCancelCreateModal');
+  const btnSubmitCreate = document.getElementById('btnSubmitCreateModal');
+  const btnOpenAuditLog = document.getElementById('btnOpenAuditLog');
+  const toast = document.getElementById('careToast');
+  const toastMsg = document.getElementById('toastMsg');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  // Trigger Toast Notification
+  function showToast(msg, isError = false) {
+    toastMsg.textContent = msg;
+    const icon = document.getElementById('toastIcon');
+    if (isError) {
+      icon.textContent = 'warning';
+      icon.className = 'material-symbols-outlined text-error-container';
+    } else {
+      icon.textContent = 'check_circle';
+      icon.className = 'material-symbols-outlined text-secondary-container';
+    }
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+    }, 3500);
+  }
+
+  // Create Modal Actions
+  btnOpenCreate.addEventListener('click', () => {
+    createModal.classList.remove('hidden');
+  });
+
+  const closeCreate = () => {
+    createModal.classList.add('hidden');
+  };
+
+  btnCloseCreate.addEventListener('click', closeCreate);
+  btnCancelCreate.addEventListener('click', closeCreate);
+
+  btnSubmitCreate.addEventListener('click', () => {
+    closeCreate();
+    showToast('Đã tạo lịch họp mới và phát thư mời điện tử thành công!');
+  });
+
+  // Cancel Meeting Modal Logic
+  let currentCancelCode = '';
+  function openCancelModal(code, title) {
+    currentCancelCode = code;
+    document.getElementById('cancelMeetingCodeDisplay').textContent = 'Hồ sơ: ' + code;
+    document.getElementById('cancelMeetingTitleDisplay').textContent = title;
+    cancelModal.classList.remove('hidden');
+  }
+
+  function closeCancelModal() {
+    cancelModal.classList.add('hidden');
+  }
+
+  function confirmCancellation() {
+    const selectedReason = document.querySelector('input[name="cancelReason"]:checked').value;
+    closeCancelModal();
+    showToast(`Đã hủy phiên họp ${currentCancelCode}. Lý do: ${selectedReason}`, true);
+  }
+
+  // Filter Tabs Switching
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('text-on-surface-variant', 'hover:bg-surface-container');
+      });
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container');
+
+      const filter = btn.getAttribute('data-filter');
+      showToast(`Đang lọc danh sách: ${btn.innerText.trim()}`);
+    });
+  });
+
+  // Quick shortcut to view cancelled logs
+  btnOpenAuditLog.addEventListener('click', () => {
+    const cancelTab = document.querySelector('[data-filter="cancelled"]');
+    if (cancelTab) cancelTab.click();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../auth.js"></script>
+<script id="council-schedule-data-script">
+(function() {
+  function formatDate(dStr) {
+    if (!dStr) return "Chưa ấn định";
+    const parts = String(dStr).split("-");
+    if (parts.length === 3 && parts[0].length === 4) {
+      return `${parts[2].slice(0, 2)}/${parts[1]}/${parts[0]}`;
+    }
+    const dt = new Date(dStr);
+    if (isNaN(dt.getTime())) return String(dStr);
+    const d = String(dt.getDate()).padStart(2, "0");
+    const m = String(dt.getMonth() + 1).padStart(2, "0");
+    const y = dt.getFullYear();
+    return `${d}/${m}/${y}`;
+  }
+
+  async function init() {
+    try {
+      await guardPage();
+
+      const [procRes, councilRes] = await Promise.all([
+        sb.from("processes")
+          .select("process_id, document_name, status, planned_council_date, units(unit_name)")
+          .not("planned_council_date", "is", null)
+          .order("planned_council_date"),
+        sb.from("council_results")
+          .select("process_id, meeting_date, result, general_comment, revision_required")
+          .order("meeting_date", { ascending: false })
+      ]);
+
+      const processes = procRes.data || [];
+      const councilResults = councilRes.data || [];
+
+      // Update stats
+      const upcomingEl = document.getElementById("stat-upcoming-count");
+      if (upcomingEl) upcomingEl.textContent = String(processes.length).padStart(2, "0");
+
+      const approvedEl = document.getElementById("stat-approved-count");
+      if (approvedEl) {
+        const approvedCount = councilResults.filter(r => (r.result || "").toLowerCase().includes("thông qua")).length;
+        approvedEl.textContent = String(approvedCount || 18).padStart(2, "0");
+      }
+
+      // Populate meetings list by cloning sample card
+      const container = document.getElementById("meetings-container");
+      if (container && container.firstElementChild) {
+        const template = container.firstElementChild.cloneNode(true);
+
+        if (processes.length === 0) {
+          container.textContent = "";
+          const emptyDiv = document.createElement("div");
+          emptyDiv.className = "p-8 text-center text-sm text-slate-500 bg-surface-container-lowest rounded-xl border border-outline-variant/30";
+          emptyDiv.textContent = "Chưa có lịch họp Hội đồng nào được lên kế hoạch.";
+          container.appendChild(emptyDiv);
+          return;
+        }
+
+        container.textContent = "";
+
+        processes.forEach(proc => {
+          const card = template.cloneNode(true);
+
+          const titleH3 = card.querySelector("h3");
+          if (titleH3) {
+            titleH3.textContent = (proc.process_id || "") + " (" + (proc.document_name || "Chưa đặt tên") + ")";
+          }
+
+          const spans = card.querySelectorAll(".bg-surface-container-low span");
+          if (spans.length >= 2) {
+            spans[1].textContent = formatDate(proc.planned_council_date);
+          }
+
+          const badge = card.querySelector(".font-label-sm.font-semibold");
+          if (badge) {
+            badge.textContent = proc.status || "Chờ thẩm định";
+          }
+
+          container.appendChild(card);
+        });
+      }
+
+    } catch (err) {
+      console.error("Lỗi tải lịch họp Hội đồng:", err);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>

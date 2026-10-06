@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>CARE BOARD - Bệnh viện Đại học Y Dược TP.HCM</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+  html, body {
+    overflow-y: auto !important;
+    scroll-behavior: smooth;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: block !important;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(216, 227, 250, 0.3);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #083b76;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #002551;
+  }
+</style><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "surface": "#f9f9ff",
+        "on-primary-fixed-variant": "#1b4682",
+        "on-tertiary": "#ffffff",
+        "surface-container-lowest": "#ffffff",
+        "tertiary-container": "#5e3000",
+        "surface-container-highest": "#d8e3fa",
+        "tertiary": "#3e1e00",
+        "on-surface-variant": "#434750",
+        "secondary-fixed": "#7cf5f5",
+        "on-error-container": "#93000a",
+        "on-secondary-container": "#006e6e",
+        "outline-variant": "#c3c6d1",
+        "on-tertiary-fixed": "#2f1500",
+        "surface-container-high": "#dee8ff",
+        "on-primary-fixed": "#001b3e",
+        "inverse-on-surface": "#ebf1ff",
+        "on-primary-container": "#82a7e9",
+        "on-tertiary-fixed-variant": "#6e3900",
+        "error-container": "#ffdad6",
+        "surface-dim": "#cfdaf1",
+        "surface-bright": "#f9f9ff",
+        "error": "#ba1a1a",
+        "surface-tint": "#375e9b",
+        "primary-fixed": "#d6e3ff",
+        "secondary-container": "#79f2f2",
+        "tertiary-fixed": "#ffdcc3",
+        "on-background": "#111c2c",
+        "on-surface": "#111c2c",
+        "inverse-primary": "aac7ff",
+        "on-secondary-fixed-variant": "#004f4f",
+        "on-primary": "#ffffff",
+        "secondary-fixed-dim": "#5cd9d8",
+        "surface-container-low": "#f0f3ff",
+        "on-secondary": "#ffffff",
+        "inverse-surface": "#263142",
+        "on-error": "#ffffff",
+        "primary-fixed-dim": "#aac7ff",
+        "on-secondary-fixed": "#002020",
+        "surface-container": "#e7eeff",
+        "on-tertiary-container": "#f38d29",
+        "surface-variant": "#d8e3fa",
+        "tertiary-fixed-dim": "#ffb77d",
+        "primary-container": "#083b76",
+        "primary": "#002551",
+        "secondary": "#006a6a",
+        "outline": "#737781",
+        "background": "#f9f9ff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-xl": "2.5rem",
+        "space-xs": "0.25rem",
+        "margin": "2rem",
+        "space-md": "1rem",
+        "space-sm": "0.5rem",
+        "gutter": "1.25rem",
+        "space-lg": "1.5rem"
+      },
+      "fontFamily": {
+        "display": ["Be Vietnam Pro"],
+        "headline-sm": ["Be Vietnam Pro"],
+        "workflow-step": ["Be Vietnam Pro"],
+        "label-md": ["Be Vietnam Pro"],
+        "headline-md": ["Be Vietnam Pro"],
+        "body-md": ["Be Vietnam Pro"],
+        "headline-lg-mobile": ["Be Vietnam Pro"],
+        "body-sm": ["Be Vietnam Pro"],
+        "body-lg": ["Be Vietnam Pro"],
+        "label-sm": ["Be Vietnam Pro"],
+        "headline-lg": ["Be Vietnam Pro"]
+      },
+      "fontSize": {
+        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+        "workflow-step": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-primary z-50 flex flex-col justify-between shadow-[0_4px_24px_rgba(0,37,81,0.25)] transition-all" id="app-sidebar"><div class="flex flex-col"><div class="px-space-md py-space-md flex items-center gap-space-sm bg-primary-container/40 backdrop-blur-md"><div class="flex items-center gap-space-sm min-w-0 flex-1 overflow-hidden"><img alt="Logo bv 1.jpg" class="w-auto object-contain shrink-0 h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtr_Cpntg3FJiuJTCifkzlG-3s6rEXL5SHoWKXkxmur6lf2K_At5rjvFzQb7BT6zlvxozx_tBO567Z-xKAxnOu0MDp2JtIxPW0KSIR7CUYA4jruo3U3se5WLuqGqSUl_NU4aT1FGZxDN3fKyzI7EJFaczL8Zd07RAro7qquVhl-HPWVyX5F6zMZz7Yk71KzIbXJhpLp7uN98oubsrId1wOMvwZaDxGSvMRzHtHsCy-DOgtmmEQbAZFvXuTzP6-XXaZbw"/><div class="flex flex-col min-w-0 sidebar-text"><span class="font-headline-sm text-headline-sm text-on-primary tracking-tight font-bold truncate">CARE BOARD</span><span class="font-label-sm text-label-sm text-surface-container-highest/80 truncate leading-tight">Bệnh viện Đại học Y Dược D TP.HCM</span></div></div><button class="p-1.5 rounded-lg text-surface-container-highest/80 hover:text-on-primary hover:bg-primary-container/70 transition-colors cursor-pointer shrink-0" id="btn-toggle-sidebar" title="Thu gọn / Mở rộng sidebar" type="button"><span class="material-symbols-outlined text-[20px]" id="icon-toggle-sidebar">menu_open</span></button></div><div class="px-space-md pt-space-md pb-space-xs"><span class="font-workflow-step text-workflow-step uppercase tracking-wider text-surface-container-highest/60 sidebar-text">HỆ THỐNG NGHIỆP VỤ</span></div><nav class="flex flex-col gap-1 px-space-sm" data-active-classes="bg-surface-container-lowest text-primary-container font-headline-sm rounded-lg shadow-sm">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="tong-quan.html" title="Tổng quan">
+<span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="danh-sach-ho-so.html" title="Danh sách hồ sơ &amp; Tiến độ">
+<span class="material-symbols-outlined text-[20px] shrink-0">view_timeline</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Danh sách hồ sơ &amp; Tiến độ</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="tao-ho-so.html" title="Tạo hồ sơ &amp; Nộp tài liệu">
+<span class="material-symbols-outlined text-[20px] shrink-0">post_add</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Tạo hồ sơ &amp; Nộp tài liệu</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="author,secretary" href="khong-gian-tai-lieu.html" title="Kho tài liệu">
+<span class="material-symbols-outlined text-[20px] shrink-0">folder_open</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Kho tài liệu</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="ai-soat-xet.html" title="AI Soát xét">
+<span class="material-symbols-outlined text-[20px] shrink-0">auto_awesome</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">AI Soát xét</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="hoi-dong-ban-hanh.html" title="Hội đồng &amp; Ban hành">
+<span class="material-symbols-outlined text-[20px] shrink-0">gavel</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Hội đồng &amp; Ban hành</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-roles="secretary" href="lich-hop-hoi-dong.html" title="Lịch họp Hội đồng">
+<span class="material-symbols-outlined text-[20px] shrink-0">event_available</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Lịch họp Hội đồng</span>
+</a>
+<a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-white text-[#083b76] font-bold shadow-md transition-all text-sm nav-item nav-link-item" data-roles="author,secretary" href="thong-tin-ca-nhan.html" title="Thông tin cá nhân">
+<span class="material-symbols-outlined text-[20px] text-[#083b76] shrink-0">badge</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Thông tin cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-blue-100/75 hover:bg-white/10 hover:text-white transition-all text-sm font-normal nav-item nav-link-item" data-action="logout" href="#" title="Đăng xuất">
+<span class="material-symbols-outlined text-[20px] shrink-0">logout</span>
+<span class="sidebar-text-item sidebar-text sidebar-label truncate">Đăng xuất</span>
+</a>
+</nav></div></aside><div class="pl-72 flex flex-col min-h-screen transition-all" id="main-layout-container" style="height: 100vh; overflow: hidden auto;"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 px-space-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,37,81,0.04)] transition-all" id="app-top-header"><div class="flex items-center gap-space-md w-96"><div class="flex items-center w-full gap-space-sm px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="w-full bg-transparent border-0 outline-none text-body-sm font-body-sm text-on-surface placeholder:text-outline" placeholder="Tra cứu mã quy trình, phác đồ, nhân sự..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="h-4 w-px bg-outline-variant hidden md:block"></div><button class="relative p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6o8Ku6Tvg-cfWgoiZpA_disyuMWf9rcAkKVoPG7MSQzhOVIBwufOMuzfBR2_U0CtXhvOciDIHKWQe6w-UlbKVl4Prfvg99UtZ8UTxKZTgDSLOfG-Lytexqh2z_-9kv5kQnPuHcXfXIy46BwCwPG-YcccEwEHLA_uT7A7OeJdXx11yeGoQgKG0xn74xLFn37qtuTAjRFb5-pnjNdJkSg5AmeU9vXl36WPy3uwIwSOiZ52FIvoVoyRDE8sF0JziSzva9g"/><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-semibold leading-tight" id="user-name">ThSĐD. Trần Minh Thư</span><span class="font-label-sm text-label-sm text-outline" id="user-role">Thư ký Hội đồng</span></div></div></div></header><main class="w-full pt-16 bg-background flex-1 px-space-lg"><div class="flex flex-col w-full pb-space-xl">
+<!-- Section: Header Trang Con -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-lg">
+<div class="flex flex-col gap-1 max-w-3xl">
+<div class="flex items-center gap-space-sm text-secondary font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+        THÔNG TIN CÁ NHÂN</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Quản lý hồ sơ công tác y tế, bảo mật tài khoản, phân quyền thao tác và thiết lập phiên làm việc tại Bệnh viện Đại học Y Dược TP.HCM
+      </p>
+</div>
+<!-- Quick Actions -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-all font-headline-sm text-headline-sm shadow-sm cursor-pointer" id="btn-logout-modal-trigger">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="">Đăng xuất tài khoản</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all font-headline-sm text-headline-sm shadow-md cursor-pointer" id="btn-save-profile">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span class="">Lưu thay đổi</span>
+</button>
+</div>
+</div>
+<!-- Main 12-Column Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- CỘT TRÁI (4 CỘT): Hồ sơ cán bộ & Quản lý phiên -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Card 1: Hồ sơ Cán bộ Y tế -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<!-- Subtle medical glass backdrop accent -->
+<div class="absolute -top-16 -right-16 w-36 h-36 rounded-full bg-primary-fixed/20 blur-2xl pointer-events-none"></div>
+<!-- Avatar Container (110px) with Online Badge -->
+<div class="relative w-[110px] h-[110px] mb-space-md">
+<img alt="ThS.ĐD. Trần Minh Thư" class="w-[110px] h-[110px] rounded-full object-cover shadow-md shadow-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKAq-xhvEbYuTSlm-aqMQbXkluWuzRN64biqq7ojMHlDa1rQrqitx2NIKS51-2HVQjYFHQooaRt2AhjLZ7G0ebyKgRFNDCorsJj_A97ZjkX1Q3OKk9_8ge_avdFVMHV6JdJJnwBFdGEmLWQISyO5RXNemPPAN31d8HjgN5DXAICpoREuJIAnrDLLcFKv3jxH0ztWzoSYpIriJToTcCQXZmsNH_yspfCyPJQ-d1uoosFd2th121y8Unj-50XqQu8ZQ1Hg"/>
+<span class="absolute bottom-1 right-1 flex items-center justify-center p-1 rounded-full bg-surface-container-lowest shadow-sm" title="Đang trực tuyến">
+<span class="w-3.5 h-3.5 rounded-full bg-secondary"></span>
+</span>
+</div>
+<!-- Name & Core Title -->
+<h2 class="font-headline-md text-headline-md text-on-surface">ThSĐD. Trần Minh Thư</h2>
+<div class="flex items-center gap-1.5 mt-1 font-label-md text-label-md text-on-surface-variant">
+<span class="font-semibold text-primary">NV-10824</span>
+<span class="">•</span>
+<span class="">Thạc sĩ Điều dưỡng</span>
+</div>
+<span class="inline-block mt-2 px-space-sm py-1 rounded-full bg-surface-container-high text-primary font-workflow-step text-workflow-step">
+          Thư ký thường trực Hội đồng Điều dưỡng
+        </span>
+<!-- Avatar Controls -->
+<div class="flex items-center gap-space-sm w-full mt-space-md pt-space-md">
+<label class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-low text-primary-container font-label-md text-label-md hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span class="">Đổi ảnh</span>
+<input accept="image/png, image/jpeg" class="hidden" type="file"/>
+</label>
+<button class="px-3 py-2 rounded-lg bg-surface-container-low text-outline hover:text-error hover:bg-error-container/30 transition-colors font-label-md text-label-md flex items-center justify-center" title="Xóa ảnh">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-2">
+          Định dạng hỗ trợ: PNG, JPG tối đa 5MB
+        </p>
+<!-- Detailed Medical Staff Info List -->
+<div class="w-full flex flex-col gap-space-sm mt-space-lg pt-space-md text-left">
+<div class="flex flex-col py-1.5 px-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline">Khoa / Phòng công tác</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">corporate_fare</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Phòng Điều dưỡng - Cơ sở 1</span>
+</div>
+</div>
+<div class="flex flex-col py-1.5 px-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline">Email<br/></span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">alternate_email</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">dieuduong.truong@umc.edu.vn</span>
+</div>
+</div>
+<div class="flex flex-col py-1.5 px-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline">Liên lạc</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">call</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Ext. 2045 <br/>(Di động: 0918.***.245)</span>
+</div>
+</div>
+</div>
+<!-- Mini Medical Compliance Note -->
+<div class="mt-space-md w-full p-space-sm rounded-lg bg-surface-container text-left flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">info</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+            Hồ sơ nhân sự đồng bộ từ Cổng nhân sự Y tế (HR-HIS UMC). Để điều chỉnh chức danh, vui lòng liên hệ P. TCCB.
+          </span>
+</div>
+</div>
+<!-- Card 2: Phiên làm việc & Đăng xuất -->
+</div>
+<!-- CỘT PHẢI (8 CỘT): Phân quyền RLS, Bảo mật, Chữ ký số CA -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-gutter">
+<!-- KHỐI 1: QUẢN LÝ PHÂN QUYỀN TRUY CẬP (ROLE-BASED & ROW LEVEL SECURITY - RLS) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Header Khối 1 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[22px]">admin_panel_settings</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Phân quyền truy cập chuyên môn</h3>
+</div>
+</div>
+</div>
+<!-- Role Designation Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">clinical_notes</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Vai trò chính được gán trong hệ thống</span>
+<span class="font-headline-sm text-headline-sm text-primary">Thư ký thường trực HĐĐD</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-highest px-2.5 py-1 rounded-md font-semibold self-start sm:self-auto">
+            Hiệu lực: Không thời hạn
+          </span>
+</div>
+<!-- Ma trận quyền hạn chi tiết -->
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<span class="font-workflow-step text-workflow-step uppercase tracking-wider text-outline">Ma trận quyền hạn chi tiết</span>
+<!-- Permission Item 1 -->
+<div class="p-space-md rounded-xl bg-surface hover:bg-surface-container-low transition-colors flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Thẩm tra &amp; Sơ duyệt Hồ sơ</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Toàn quyền rà soát nội dung kỹ thuật, gửi yêu cầu chỉnh sửa và phân công chuyên gia phản biện.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary font-semibold hidden sm:inline">Đang kích hoạt</span>
+<div class="w-11 h-6 bg-secondary rounded-full flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-sm transform translate-x-5 transition-transform"></div>
+</div>
+</div>
+</div>
+<!-- Permission Item 2 -->
+<div class="p-space-md rounded-xl bg-surface hover:bg-surface-container-low transition-colors flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Điều phối Phiên họp HĐĐD</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lập lịch họp chính thức, gửi thư mời hội đồng, tổng hợp kết quả biểu quyết điện tử thời gian thực.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary font-semibold hidden sm:inline">Đang kích hoạt</span>
+<div class="w-11 h-6 bg-secondary rounded-full flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-sm transform translate-x-5 transition-transform"></div>
+</div>
+</div>
+</div>
+<!-- Permission Item 3 -->
+<div class="p-space-md rounded-xl bg-surface hover:bg-surface-container-low transition-colors flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Ký nháy &amp; Đóng dấu số Văn thư</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ký số văn bản chuẩn bị trình Giám đốc phê duyệt, áp số lưu chiểu quy trình điều dưỡng.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary font-semibold hidden sm:inline">Đang kích hoạt</span>
+<div class="w-11 h-6 bg-secondary rounded-full flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-sm transform translate-x-5 transition-transform"></div>
+</div>
+</div>
+</div>
+<!-- Permission Item 4 -->
+<div class="p-space-md rounded-xl bg-surface hover:bg-surface-container-low transition-colors flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Quản lý Danh mục Kỹ thuật Toàn viện</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Xem và xuất dữ liệu danh mục quy trình điều dưỡng liên thông trực tiếp hệ thống HIS/EMR.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary font-semibold hidden sm:inline">Đang kích hoạt</span>
+<div class="w-11 h-6 bg-secondary rounded-full flex items-center p-0.5 cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest shadow-sm transform translate-x-5 transition-transform"></div>
+</div>
+</div>
+</div>
+<!-- Permission Scope Box -->
+</div>
+<!-- Security Note -->
+</div>
+<!-- KHỐI 2: BẢO MẬT & ĐỔI MẬT KHẨU -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[22px]">password</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Bảo mật</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Chính sách bảo mật tài khoản định kỳ 90 ngày theo chuẩn bệnh viện số</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-high px-2.5 py-1 rounded-full font-medium">Khuyến nghị mạnh</span>
+</div>
+<!-- Form đổi mật khẩu -->
+<form class="grid grid-cols-1 md:grid-cols-3 gap-space-md" onsubmit="event.preventDefault();">
+<!-- Mật khẩu hiện tại -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Mật khẩu hiện tại *</label>
+<div class="relative flex items-center">
+<input class="w-full py-2 pl-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest shadow-sm" id="input-current-pass" type="password"/>
+<button class="absolute right-2.5 text-outline hover:text-primary transition-colors" onclick="togglePass('input-current-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Mật khẩu mới -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Mật khẩu mới *</label>
+<div class="relative flex items-center">
+<input class="w-full py-2 pl-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest shadow-sm" id="input-new-pass" placeholder="Nhập mật khẩu mới..." type="password"/>
+<button class="absolute right-2.5 text-outline hover:text-primary transition-colors" onclick="togglePass('input-new-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Xác nhận mật khẩu mới -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Xác nhận mật khẩu mới *</label>
+<div class="relative flex items-center">
+<input class="w-full py-2 pl-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm outline-none focus:bg-surface-container-lowest shadow-sm" id="input-confirm-pass" placeholder="Xác nhận lại mật khẩu..." type="password"/>
+<button class="absolute right-2.5 text-outline hover:text-primary transition-colors" onclick="togglePass('input-confirm-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Password Strength Indicator -->
+<div class="col-span-1 md:col-span-3 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Tiêu chuẩn mật khẩu: Tối thiểu 8 ký tự, gồm chữ hoa, số và ký tự đặc biệt</span>
+<div class="flex items-center gap-1.5 mt-1">
+<div class="w-16 h-1.5 rounded-full bg-secondary"></div>
+<div class="w-16 h-1.5 rounded-full bg-secondary"></div>
+<div class="w-16 h-1.5 rounded-full bg-secondary"></div>
+<div class="w-16 h-1.5 rounded-full bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm text-secondary font-bold ml-1">Mạnh (85/100)</span>
+</div>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-headline-sm text-headline-sm shadow-sm shrink-0 cursor-pointer" type="button">
+              Cập nhật mật khẩu mới
+            </button>
+</div>
+</form>
+<!-- 2FA / OTP Bệnh viện -->
+</div>
+<!-- KHỐI 3: CHỮ KÝ SỐ VÀ CHỨNG THƯ PHÁP LÝ (CA Y TẾ) -->
+</div>
+</div>
+<!-- Modal Xác nhận Đăng xuất (Tương tác bảo mật) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm hidden p-space-md" id="logout-confirm-modal">
+<div class="bg-surface-container-lowest rounded-xl max-w-md w-full p-space-lg shadow-xl flex flex-col gap-space-md relative">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]">logout</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface">Xác nhận đăng xuất</h4>
+<span class="font-body-sm text-body-sm text-outline">Hệ thống CARE BOARD UMC</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Cán bộ có chắc chắn muốn kết thúc phiên làm việc hiện tại? Mọi thao tác hồ sơ chưa lưu trữ trên máy chủ sẽ cần được kiểm tra lại trước khi rời hệ thống.
+      </p>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-headline-sm text-headline-sm transition-colors cursor-pointer" id="btn-cancel-logout">
+          Hủy bỏ
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-headline-sm text-headline-sm shadow-md transition-all cursor-pointer" data-action="logout" id="btn-proceed-logout">
+          Xác nhận đăng xuất
+        </button>
+</div>
+</div>
+</div>
+<!-- Toast Thông báo Lưu thành công -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-space-md py-3 rounded-xl bg-primary text-on-primary shadow-xl transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-notification">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm">Cập nhật thành công</span>
+<span class="font-label-sm text-label-sm text-surface-container-highest">Thông tin cán bộ y tế đã được ghi nhận vào cơ sở dữ liệu.</span>
+</div>
+</div><script>
+  const toggleBtn = document.getElementById('btn-toggle-sidebar');
+  const sidebarEl = document.getElementById('app-sidebar');
+  const mainLayout = document.getElementById('main-layout-container');
+  const topHeader = document.getElementById('app-top-header');
+  const toggleIcon = document.getElementById('icon-toggle-sidebar');
+  let isSidebarCollapsed = false;
+
+  if (toggleBtn && sidebarEl && mainLayout && topHeader) {
+    toggleBtn.addEventListener('click', () => {
+      isSidebarCollapsed = !isSidebarCollapsed;
+      const sidebarTexts = sidebarEl.querySelectorAll('.sidebar-text');
+      const navLinks = sidebarEl.querySelectorAll('nav > a');
+
+      if (isSidebarCollapsed) {
+        sidebarEl.classList.remove('w-72');
+        sidebarEl.classList.add('w-20');
+        mainLayout.classList.remove('pl-72');
+        mainLayout.classList.add('pl-20');
+        topHeader.classList.remove('left-72');
+        topHeader.classList.add('left-20');
+        if (toggleIcon) toggleIcon.textContent = 'menu';
+        sidebarTexts.forEach(el => el.classList.add('hidden'));
+        navLinks.forEach(link => {
+          link.classList.remove('justify-between');
+          link.classList.add('justify-center');
+        });
+      } else {
+        sidebarEl.classList.remove('w-20');
+        sidebarEl.classList.add('w-72');
+        mainLayout.classList.remove('pl-20');
+        mainLayout.classList.add('pl-72');
+        topHeader.classList.remove('left-20');
+        topHeader.classList.add('left-72');
+        if (toggleIcon) toggleIcon.textContent = 'menu_open';
+        sidebarTexts.forEach(el => el.classList.remove('hidden'));
+        navLinks.forEach(link => {
+          link.classList.remove('justify-center');
+          if (link.getAttribute('data-path') === 'ai-review-chuyen-mon-pro') {
+            link.classList.add('justify-between');
+          }
+        });
+      }
+    });
+  }
+</script>
+</div>
+<script>
+  // Toggle password visibility
+  function togglePass(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (!input || !icon) return;
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  // Handle Logout Confirmation Modal
+  const logoutTrigger = document.getElementById('btn-logout-modal-trigger');
+  const logoutModal = document.getElementById('logout-confirm-modal');
+  const cancelLogout = document.getElementById('btn-cancel-logout');
+  const proceedLogout = document.getElementById('btn-proceed-logout');
+
+  if (logoutTrigger && logoutModal) {
+    logoutTrigger.addEventListener('click', () => {
+      logoutModal.classList.remove('hidden');
+    });
+  }
+
+  if (cancelLogout && logoutModal) {
+    cancelLogout.addEventListener('click', () => {
+      logoutModal.classList.add('hidden');
+    });
+  }
+
+  if (proceedLogout) {
+    proceedLogout.addEventListener('click', () => {
+      logoutModal.classList.add('hidden');
+    });
+  }
+
+  // Toast notification for saving changes
+  const saveBtn = document.getElementById('btn-save-profile');
+  const toast = document.getElementById('toast-notification');
+
+  if (saveBtn && toast) {
+    saveBtn.addEventListener('click', () => {
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    });
+  }
+</script></main></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../auth.js"></script>
+<script id="profile-data-script">
+(function() {
+  async function init() {
+    try {
+      const me = await guardPage();
+      if (!me) return;
+
+      const { data: profile } = await sb
+        .from("profiles")
+        .select("id, display_name, email, role, phone, units(unit_name)")
+        .eq("id", me.id)
+        .maybeSingle();
+
+      const user = profile || me;
+
+      const nameEl = document.getElementById("profile-display-name");
+      if (nameEl && user.display_name) nameEl.textContent = user.display_name;
+
+      const roleEl = document.getElementById("profile-role-badge");
+      if (roleEl) {
+        roleEl.textContent = user.role === "secretary" ? "Thư ký Hội đồng ĐD" : "Tác giả Đơn vị";
+      }
+
+      const emailEl = document.getElementById("profile-email");
+      if (emailEl && user.email) emailEl.textContent = user.email;
+
+      const unitEl = document.getElementById("profile-unit");
+      if (unitEl) {
+        unitEl.textContent = (user.units && user.units.unit_name) ? user.units.unit_name : "Toàn viện";
+      }
+
+      // Password change form
+      const btnSavePass = document.querySelector("button[onclick*='savePassword'], button[onclick*='changePassword'], #btn-save-password");
+      // If user submits password change
+      const newPassInput = document.querySelectorAll("input[type='password']")[1];
+      const confirmPassInput = document.querySelectorAll("input[type='password']")[2];
+
+    } catch (err) {
+      console.error("Lỗi thông tin cá nhân:", err);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>

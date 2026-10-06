@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Be Vietnam Pro',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#5cd9d8", "on-tertiary": "#ffffff", "on-error": "#ffffff", "surface-container-highest": "#d8e3fa", "on-tertiary-container": "#f38d29", "secondary": "#006a6a", "inverse-primary": "#aac7ff", "on-background": "#111c2c", "surface-container-low": "#f0f3ff", "tertiary-container": "#5e3000", "error-container": "#ffdad6", "on-secondary-container": "#006e6e", "surface-dim": "#cfdaf1", "surface-variant": "#d8e3fa", "primary-fixed": "#d6e3ff", "on-tertiary-fixed-variant": "#6e3900", "on-secondary-fixed-variant": "#004f4f", "surface-bright": "#f9f9ff", "on-primary-fixed": "#001b3e", "on-surface-variant": "#434750", "tertiary-fixed": "#ffdcc3", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#dee8ff", "secondary-container": "#79f2f2", "outline": "#737781", "outline-variant": "#c3c6d1", "inverse-on-surface": "#ebf1ff", "on-surface": "#111c2c", "surface": "#f9f9ff", "on-error-container": "#93000a", "tertiary": "#3e1e00", "on-primary": "#ffffff", "on-primary-container": "#82a7e9", "error": "#ba1a1a", "inverse-surface": "#263142", "primary-container": "#083b76", "secondary-fixed": "#7cf5f5", "surface-tint": "#375e9b", "on-primary-fixed-variant": "#1b4682", "background": "#f9f9ff", "on-tertiary-fixed": "#2f1500", "surface-container": "#e7eeff", "primary-fixed-dim": "#aac7ff", "on-secondary": "#ffffff", "on-secondary-fixed": "#002020", "primary": "#002551" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "gutter": "1.25rem" }, "fontFamily": { "headline-lg": ["Be Vietnam Pro"], "display": ["Be Vietnam Pro"], "body-sm": ["Be Vietnam Pro"], "headline-sm": ["Be Vietnam Pro"], "body-md": ["Be Vietnam Pro"], "workflow-step": ["Be Vietnam Pro"], "body-lg": ["Be Vietnam Pro"], "label-md": ["Be Vietnam Pro"], "label-sm": ["Be Vietnam Pro"], "headline-md": ["Be Vietnam Pro"], "headline-lg-mobile": ["Be Vietnam Pro"] }, "fontSize": { "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "workflow-step": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style id="custom-scrollbar-style">main::-webkit-scrollbar,body::-webkit-scrollbar{width:6px;display:block;}main::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#f0f3ff;}main::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#083b76;border-radius:9999px;}main::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover{background:#062b56;}main,body{scrollbar-width:thin!important;scrollbar-color:#083b76 #f0f3ff!important;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(8,59,118,0.06)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Mở menu" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container text-primary-container transition-colors -ml-1" id="open-sidebar-btn" onclick="document.getElementById('mobile-drawer').classList.remove('-translate-x-full');document.getElementById('drawer-backdrop').classList.remove('opacity-0','pointer-events-none');"><span class="material-symbols-outlined text-[24px]">menu</span></button><img alt="Logo Bệnh viện Đại học Y Dược TPHCM" class="w-8 h-8 object-contain rounded-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJXdAd4nHIz3m-xMxz5XbzrwKfkoBCw6_WlvG5sM9tNAqMbjIIb3QE4L8MOPTTr36vfYMFZiI4s5uOM7B2vUAPqvozfovtlAZahR_M4C6E8hfAA6RPq6hShn9rU9LRC1ZubNTfOwPqzIGn1oBgiCvTUY5Fc8NNHnHfvrLQ40-GslniDno0QINGg6UBsot1CNxrz9sd-BGTZPw1X0PP4FbLHL9L6GGJ28rmSl-683Nzx12JvY0KmaHVch09dYGyDRQ06w"/><div class="flex flex-col min-w-0 leading-none"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold text-primary-container tracking-tight truncate">CARE BOARD</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-medium truncate">Bệnh viện Đại học Y Dược TPHCM</span></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="Thông báo" class="relative w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-primary-container">notifications</span><span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] font-bold flex items-center justify-center">3</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_0_2px_rgba(8,59,118,0.1)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR_eBAfrinkrg18V7dkMs03MbId4nWLUlriYs7ksl2Wbr1yrmNQqJ3rIjXsmZuFHKJOdyU5JmPfRcPIE1Ys4AQBwJy0wlknGfEktm4EGpdcGNzW8oT9q_LSgwATgkpPHulhS1tDGhn1vrRLJqhgH2BgLScUEuP43nY0gIaT5qQtb8sXecH5lFVqs_Dhw4GGHdOLvE9D47jBWfS4JMFBkhA6a-AW49oQIv09rIiGOmZN66tmZu-0eg09edipScVEij6KQ"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen overflow-y-auto" style="scroll-behavior: smooth; max-height: calc(0px + 100vh); overflow-y: scroll !important; scrollbar-width: thin !important; scrollbar-color: rgb(8, 59, 118) rgb(240, 243, 255) !important;"><div class="flex flex-col w-full px-space-md space-y-space-md pb-12">
+<!-- Header Title & Subtitle Banner -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="space-y-1">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+          Chuẩn Bộ Y Tế
+        </span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary-container font-bold tracking-tight">
+          TẠO HỒ SƠ - NỘP TÀI LIỆU MỚI
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Khởi tạo quy trình kỹ thuật, hướng dẫn chuyên môn theo chuẩn Thông tư 31/2021/TT-BYT.
+        </p>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">post_add</span>
+</div>
+</div>
+</div>
+<!-- Mobile Progressive Stepper (3-step) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center font-bold">1</span>
+<span class="font-headline-sm text-headline-sm text-primary-container font-semibold">Thông tin chung</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Bước 1 / 3</span>
+</div>
+<!-- Progress Indicator Track -->
+<div class="grid grid-cols-3 gap-1.5 pt-1">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container-high"></div>
+<div class="h-1.5 rounded-full bg-surface-container-high"></div>
+</div>
+<div class="flex justify-between text-on-surface-variant font-label-sm text-[11px] px-0.5 pt-1">
+<span class="text-primary-container font-semibold">1. Thông tin</span>
+<span class="">2. Tải tài liệu</span>
+<span class="">3. Kiểm tra &amp; Nộp</span>
+</div>
+</div>
+<!-- Medical Form Section 1: Legal & Metadata -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center gap-2 pb-1 border-b-0">
+<span class="w-2 h-5 rounded-full bg-primary"></span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold uppercase tracking-tight">
+        1. Thông tin</h2>
+</div>
+<!-- Process Code & Expected Review Date Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-1">
+          Mã tài liệu<span class="text-error font-bold">*</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-low text-primary-container font-workflow-step text-workflow-step font-bold px-3 py-2.5 rounded-lg focus:outline-none focus:bg-surface-container cursor-default" readonly="" type="text" value="QTKT-2026-009"/>
+<span class="material-symbols-outlined text-secondary absolute right-2.5 text-[18px]">lock</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-1">
+          Trình Hội đồng
+          <span class="text-error font-bold">*</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-3 py-2.5 rounded-lg shadow-sm focus:outline-none focus:bg-surface-container-low" placeholder="15/11/2026" type="text" value="15/04/2026"/>
+<span class="material-symbols-outlined text-outline absolute right-2.5 text-[18px]">calendar_today</span>
+</div>
+</div>
+</div>
+<!-- Document Title -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-1">
+        Tên tài liệu chuyên môn chăm sóc
+        <span class="text-error font-bold">*</span>
+</label>
+<textarea class="w-full bg-surface-container-low p-3 rounded-lg text-on-surface font-body-md text-body-md leading-relaxed focus:outline-none focus:bg-surface-container resize-none" rows="3">Quy trình thiết lập và quản lý catheter tĩnh mạch ngoại biên có kim luồn lưu hạn ngắn</textarea>
+</div>
+<!-- Document Type & Priority -->
+<div class="space-y-space-sm">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-1">
+          Loại văn bản chuyên môn
+        </label>
+<div class="relative flex items-center">
+<select class="w-full appearance-none bg-surface-container-low px-3 py-2.5 pr-8 rounded-lg text-on-surface font-body-sm text-body-sm font-medium focus:outline-none">
+<option selected="">Quy trình kỹ thuật điều dưỡng (QTKT)</option>
+<option>Hướng dẫn chuyên môn chăm sóc (HDCM)</option>
+<option>Bảng kiểm an toàn lâm sàng (Checklist)</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-2.5 pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Priority Selector -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">
+          Mức độ ưu tiên thẩm định
+        </label>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low cursor-pointer active:scale-95 transition-transform">
+<input checked="" class="accent-primary w-4 h-4" name="priority" type="radio"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Thường</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hạn 15 ngày</span>
+</div>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-low cursor-pointer active:scale-95 transition-transform">
+<input class="accent-tertiary-container w-4 h-4" name="priority" type="radio"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-tertiary-container font-semibold flex items-center gap-1">
+                Khẩn
+                <span class="material-symbols-outlined text-[14px]">bolt</span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hạn 05 ngày</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Lead Unit & Lead Author -->
+<div class="space-y-space-sm">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Đơn vị chủ trì soạn thảo</label>
+<div class="relative flex items-center">
+<select class="w-full appearance-none bg-surface-container-low px-3 py-2.5 pr-8 rounded-lg text-on-surface font-body-sm text-body-sm font-medium focus:outline-none">
+<option selected="">Khoa Điều dưỡng</option>
+<option>Khoa Hồi sức tích cực - Chống độc</option>
+<option>Khoa Cấp cứu</option>
+<option>Khoa Ngoại Tiêu hóa</option>
+</select>
+<span class="material-symbols-outlined text-outline absolute right-2.5 pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Tác giả phụ trách chính (Chủ biên)</label>
+<div class="flex items-center gap-2 bg-surface-container-low p-2.5 rounded-lg">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md flex-shrink-0">
+            NA
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">ThSĐD. Nguyễn An</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Điều dưỡng Trưởng khoa • Khoa Cấp cứu</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Collaborative Assessment Units (Tags) -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Đơn vị phối hợp thẩm định</label>
+<span class="font-label-sm text-label-sm text-secondary font-bold">3 đơn vị</span>
+</div>
+<div class="flex flex-wrap gap-1.5 items-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+          Khoa KSNK
+          <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+          Khoa Dược BV
+          <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+          Phòng Quản lý Chất lượng
+          <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary-container font-label-sm text-label-sm font-semibold active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+          Thêm đơn vị
+        </button>
+</div>
+</div>
+<!-- Legal & Clinical Basis Textarea -->
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">Căn cứ &amp; Mục đích ban hành</label>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span> Gợi ý AI
+        </span>
+</div>
+<textarea class="w-full bg-surface-container-low p-3 rounded-lg text-on-surface font-body-sm text-body-sm leading-relaxed focus:outline-none focus:bg-surface-container resize-none" rows="3">Thực hiện theo quy chuẩn Thông tư 31/2021/TT-BYT ngày 28/12/2021 của Bộ Y tế về quy định hoạt động điều dưỡng trong bệnh viện. Đồng bộ hóa tiêu chuẩn an toàn đặt đường truyền tĩnh mạch theo khuyến cáo cập nhật INS (Infusion Nurses Society) 2024 nhằm giảm tỷ lệ viêm tĩnh mạch và nhiễm khuẩn huyết.</textarea>
+</div>
+</div>
+<!-- Medical Form Section 2: Storage S3 / Supabase Attachments -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-5 rounded-full bg-secondary"></span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold uppercase tracking-tight">
+          2. Đính kèm Tài liệu
+        </h2>
+</div>
+</div>
+<!-- [A] Main Completed Document -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1">
+          [A] Tài liệu hoàn chỉnh (.docx)
+          <span class="text-error font-bold">*</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">task_alt</span> Đúng mẫu BV
+        </span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">QTKT-2026-009_ThietLapCatheter.docx</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2.4 MB • Đã tải lên</span>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-error hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- [B] Clinical Evidence & References -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1">
+          [B] Dẫn chứng tham khảo (PDF, URL)
+        </span>
+<button class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-bold active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+          Thêm file
+        </button>
+</div>
+<!-- Reference File Item 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] flex-shrink-0">picture_as_pdf</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface font-medium truncate">Guideline_CDC_Vascular_Access_2024.pdf</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">CDC Guidelines • 4.8 MB</span>
+</div>
+</div>
+<button class="text-on-surface-variant p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Reference File Item 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] flex-shrink-0">description</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface font-medium truncate">Tieu_chuan_INS_Standards_2024.docx</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">INS Reference • 1.9 MB</span>
+</div>
+</div>
+<button class="text-on-surface-variant p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- [C] Official Request Submission Form -->
+<div class="space-y-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1">
+        [C] Phiếu đề nghị thông qua tài liệu
+        <span class="text-error font-bold">*</span>
+</span>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-high/60 shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">draw</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Phieu_de_nghi_KhoaCapCuu_signed.pdf</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified_user</span> Đã ký điện tử Trưởng khoa
+            </span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-primary-container" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Automated Pre-submission Compliance Checklist Card -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">
+          Kiểm tra trước khi nộp
+        </h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+        3/3 Đạt yêu cầu
+      </span>
+</div>
+<div class="space-y-2 pt-1">
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">done_all</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">
+          Tài liệu chính đúng biểu mẫu quy chuẩn BYT (.docx chuẩn phông &amp; cấu trúc)
+        </p>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">done_all</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">
+          Đã đính kèm tối thiểu 2 dẫn chứng lâm sàng tham khảo có đối chứng
+        </p>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">done_all</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug">
+          Có đầy đủ chữ ký điện tử của chủ biên và lãnh đạo đơn vị</p>
+</div>
+</div>
+</div>
+<!-- Workflow Dispatch Guidance Box -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0">info</span>
+<p class="font-body-sm text-[12px] leading-relaxed">
+      Hồ sơ sau khi nộp sẽ được chuyển tự động đến <strong class="text-primary-container">Thư ký HĐĐD ThSĐD. Trần Minh Thư</strong> để kiểm tra tính hợp lệ trong vòng 24 giờ làm việc.
+    </p>
+</div>
+<!-- Action Floating Control Area -->
+<div class="pt-2 flex flex-col gap-space-sm">
+<button class="w-full h-12 rounded-xl bg-primary-container text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all" type="button">
+<span class="">Nộp hồ sơ &amp; Chuyển thư ký</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<div class="flex items-center justify-between gap-space-sm">
+<button class="flex-1 h-10 rounded-lg bg-surface-container-high text-primary-container font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+        Lưu bản nháp
+      </button>
+<button class="flex-1 h-10 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+        Lịch sử tạo
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Mobile micro-interaction triggers for feedback
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (navigator.vibrate) {
+        navigator.vibrate(20);
+      }
+    });
+  });
+</script></main>
+<div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop" onclick="document.getElementById('mobile-drawer').classList.add('-translate-x-full');this.classList.add('opacity-0','pointer-events-none');"></div><aside class="fixed top-0 left-0 bottom-0 w-[290px] max-w-[85vw] bg-[#083b76] text-white z-50 flex flex-col shadow-2xl transition-transform duration-300 transform -translate-x-full" id="mobile-drawer"><div class="p-4 flex items-center justify-between border-b border-white/10"><div class="flex items-center gap-3 min-w-0"><img alt="Logo BV Đại học Y Dược" class="w-9 h-9 rounded-lg object-contain bg-white p-0.5 shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUo88xljEpE01ulDofoJODnIq-Hn53j4_uk8W6KclE4GYC8gVabyNtvvcNf3VeNKRkja-vcufCPduHVEZubrKiV94WgqKoq9-D3JwAQvPD3iw_opBeZKyz5sN-XnaKKhH_lC0a3KgCngfHq8OMobBrcrExBSWn0VEywYM0Y07Nmh9ZP_TMeftv3YWIBGh79qI1v82bnG_7mX0RHSnlkrx6NcTaV1_kggyctN_lX8I_WMj0T_-2BpgPpw59eS8tNmlSng"/><div class="flex flex-col min-w-0"><span class="font-bold text-[16px] leading-tight tracking-tight text-white truncate">CARE BOARD</span><span class="text-[11px] text-blue-200 truncate">Bệnh viện Đại học Y Dược TPHCM</span></div></div><button aria-label="Đóng menu" class="w-8 h-8 rounded-lg flex items-center justify-center text-blue-200 hover:text-white hover:bg-white/10 transition-colors" id="close-sidebar-btn" onclick="document.getElementById('mobile-drawer').classList.add('-translate-x-full');document.getElementById('drawer-backdrop').classList.add('opacity-0','pointer-events-none');"><span class="material-symbols-outlined text-[22px]">close</span></button></div><div class="flex-1 overflow-y-auto py-3 px-2 space-y-1"><div class="px-3 pt-2 pb-1 text-[11px] font-semibold text-blue-200 uppercase tracking-wider">HỆ THỐNG NGHIỆP VỤ</div><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="secretary" href="tong-quan.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="">Tổng quan &amp; Dashboard</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="author,secretary" href="danh-sach-ho-so.html"><span class="material-symbols-outlined text-[20px]">checklist</span><span class="">Danh sách hồ sơ &amp; Tiến độ</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#aac7ff]/20 text-white font-semibold text-[13px] shadow-sm" data-roles="author,secretary" href="tao-ho-so.html"><span class="material-symbols-outlined text-[20px] text-[#79f2f2]">post_add</span><span class="">Tạo hồ sơ &amp; Nộp tài liệu</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="author,secretary" href="khong-gian-tai-lieu.html"><span class="material-symbols-outlined text-[20px]">folder_open</span><span class="">Kho tài liệu</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="secretary" href="ai-soat-xet.html"><span class="material-symbols-outlined text-[20px]">auto_awesome</span><span class="">AI Review Chuyên môn</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="secretary" href="hoi-dong-ban-hanh.html"><span class="material-symbols-outlined text-[20px]">verified</span><span class="">Hội đồng ĐĐ &amp; Ban hành</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="secretary" href="lich-hop-hoi-dong.html"><span class="material-symbols-outlined text-[20px]">event_available</span><span class="">Lịch họp HĐĐD</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-blue-100 hover:bg-white/10 hover:text-white transition-colors text-[13px] font-medium" data-roles="author,secretary" href="thong-tin-ca-nhan.html"><span class="material-symbols-outlined text-[20px]">person</span><span class="">Thông tin cá nhân</span></a></div><div class="p-3 border-t border-white/10 flex items-center justify-between gap-2 mt-auto" id="drawer-user-card">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white">person</span>
+</div>
+<div class="flex flex-col min-w-0 leading-tight">
+<span class="text-xs font-semibold text-white truncate" id="user-name">ThSĐD. Trần Minh Thư</span>
+<span class="text-[10px] text-white/70 truncate" id="user-role">Thư ký Hội đồng</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors shrink-0 flex items-center justify-center" data-action="logout" title="Đăng xuất" type="button">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div></aside>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../config.js"></script>
+<script src="../auth.js"></script>
+<script id="mobile-tao-ho-so-script">
+(function() {
+  let currentUser = null;
+
+  async function loadUnits() {
+    try {
+      const { data, error } = await sb.from("units").select("id, unit_name").order("unit_name");
+      if (error) {
+        console.error("Lỗi nạp units mobile:", error);
+        return;
+      }
+      const selects = document.querySelectorAll("select");
+      if (selects.length >= 2 && data) {
+        const unitSelect = selects[1];
+        unitSelect.textContent = "";
+        data.forEach(u => {
+          const opt = document.createElement("option");
+          opt.value = u.id;
+          opt.textContent = u.unit_name;
+          unitSelect.appendChild(opt);
+        });
+        if (currentUser && currentUser.unit_id) {
+          unitSelect.value = currentUser.unit_id;
+        }
+      }
+    } catch (err) {
+      console.error("Lỗi kết nối units mobile:", err);
+    }
+  }
+
+  async function init() {
+    try {
+      currentUser = await guardPage();
+      await loadUnits();
+
+      const btnSubmit = document.getElementById("mobile-btn-submit");
+      if (btnSubmit) {
+        btnSubmit.addEventListener("click", async function(e) {
+          e.preventDefault();
+          const nameInput = document.getElementById("mobile-input-document-name");
+          const docName = nameInput ? nameInput.value.trim() : "";
+          if (!docName) {
+            alert("Vui lòng nhập tên quy trình / hướng dẫn.");
+            if (nameInput) nameInput.focus();
+            return;
+          }
+
+          const selects = document.querySelectorAll("select");
+          const docType = selects[0] ? selects[0].value : "Quy trình kỹ thuật";
+          const unitId = selects[1] ? selects[1].value : null;
+
+          const payload = {
+            process_id: "QTKT-2026-" + Math.floor(100 + Math.random() * 900),
+            document_name: docName,
+            document_type: docType,
+            unit_id: unitId,
+            stage: 1,
+            status: "Đang soạn thảo"
+          };
+
+          btnSubmit.disabled = true;
+          btnSubmit.textContent = "Đang gửi hồ sơ...";
+
+          const { error } = await sb.from("processes").insert(payload);
+          if (error) {
+            console.error("Lỗi tạo hồ sơ mobile:", error);
+            alert("Lỗi: " + error.message);
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Nộp hồ sơ";
+            return;
+          }
+
+          alert("Khởi tạo hồ sơ thành công!");
+          window.location.href = "danh-sach-ho-so.html";
+        });
+      }
+    } catch (err) {
+      console.error("Lỗi mobile tao-ho-so:", err);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body></html>
